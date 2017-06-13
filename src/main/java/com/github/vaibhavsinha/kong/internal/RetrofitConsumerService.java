@@ -1,6 +1,7 @@
 package com.github.vaibhavsinha.kong.internal;
 
 import com.github.vaibhavsinha.kong.model.consumer.Consumer;
+import com.github.vaibhavsinha.kong.model.consumer.ConsumerList;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -23,4 +24,7 @@ public interface RetrofitConsumerService {
 
     @DELETE("/consumers/{id}")
     Call<Consumer> deleteConsumer(@Path("id") String usernameOrId);
+
+    @GET("/consumers/")
+    Call<ConsumerList> listConsumers(@Query("id") String id, @Query("custom_id") String customId, @Query("username") String username, @Query("size") Long size, @Query("offset") String offset);
 }

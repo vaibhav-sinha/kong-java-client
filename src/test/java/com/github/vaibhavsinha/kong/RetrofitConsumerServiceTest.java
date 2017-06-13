@@ -3,11 +3,14 @@ package com.github.vaibhavsinha.kong;
 import com.github.vaibhavsinha.kong.exception.KongClientException;
 import com.github.vaibhavsinha.kong.impl.KongClient;
 import com.github.vaibhavsinha.kong.model.consumer.Consumer;
+import com.github.vaibhavsinha.kong.model.consumer.ConsumerList;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by vaibhav on 12/06/17.
@@ -68,5 +71,18 @@ public class RetrofitConsumerServiceTest {
     @Test
     public void testDeleteConsumer() throws IOException {
         kongClient.getConsumerService().deleteConsumer("fd609820-0021-4fdf-9c80-bc692c3e4fe6");
+    }
+
+    @Test
+    public void testListConsumers() throws IOException {
+        List<Consumer> consumers = new ArrayList<>();
+        ConsumerList consumerList = kongClient.getConsumerService().listConsumers(null, null, null, 1L, null);
+        consumers.addAll(consumerList.getData());
+        while (consumerList.getOffset() != null) {
+            consumerList = kongClient.getConsumerService().listConsumers(null, null, null, 1L, consumerList.getOffset());
+            consumers.addAll(consumerList.getData());
+        }
+        System.out.println(consumers);
+        Assert.assertNotEquals(consumers.size(), 0);
     }
 }
