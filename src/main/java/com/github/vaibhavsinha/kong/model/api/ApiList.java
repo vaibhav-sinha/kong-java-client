@@ -1,4 +1,4 @@
-package com.github.vaibhavsinha.kong.model.consumer;
+package com.github.vaibhavsinha.kong.model.api;
 
 import com.github.vaibhavsinha.kong.model.common.AbstractEntityList;
 import lombok.Data;
@@ -9,8 +9,8 @@ import java.util.List;
  * Created by vaibhav on 13/06/17.
  */
 @Data
-public class ConsumerList extends AbstractEntityList {
+public class ApiList extends AbstractEntityList {
     Long total;
     String next;
-    List<Consumer> data;
+    List<Api> data;
 }
