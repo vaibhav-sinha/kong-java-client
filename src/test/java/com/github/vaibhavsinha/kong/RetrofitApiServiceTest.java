@@ -44,7 +44,7 @@ public class RetrofitApiServiceTest {
         System.out.print(response);
         Assert.assertEquals("V2_Api", response.getName());
     }
-    
+
     @Test
     public void testListApis() throws IOException {
         List<Api> apis = new ArrayList<>();
