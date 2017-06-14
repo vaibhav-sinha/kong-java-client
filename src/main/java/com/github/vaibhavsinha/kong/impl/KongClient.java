@@ -16,6 +16,7 @@ public class KongClient {
     private CertificateService certificateService;
     private SniService sniService;
     private UpstreamService upstreamService;
+    private TargetService targetService;
 
     public KongClient(String adminUrl) {
         RetrofitServiceCreator creator = new RetrofitServiceCreator(adminUrl);
@@ -25,6 +26,7 @@ public class KongClient {
         certificateService = creator.create(CertificateService.class, RetrofitCertificateService.class);
         sniService = creator.create(SniService.class, RetrofitSniService.class);
         upstreamService = creator.create(UpstreamService.class, RetrofitUpstreamService.class);
+        targetService = creator.create(TargetService.class, RetrofitTargetService.class);
     }
 
 }
