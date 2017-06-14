@@ -14,7 +14,7 @@ public interface PluginService {
     Plugin getPlugin(String nameOrId);
     Plugin updatePlugin(String nameOrId, Plugin request);
     Plugin createOrUpdatePlugin(Plugin request);
-    Plugin deletePlugin(String usernameOrId);
+    Plugin deletePlugin(String nameOrId);
     PluginList listPlugins(String id, String apiId, String consumerId, String name, Long size, String offset);
     EnabledPlugins listEnabledPlugins();
 }
