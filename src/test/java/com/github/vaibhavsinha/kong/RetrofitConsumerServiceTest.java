@@ -2,8 +2,8 @@ package com.github.vaibhavsinha.kong;
 
 import com.github.vaibhavsinha.kong.exception.KongClientException;
 import com.github.vaibhavsinha.kong.impl.KongClient;
-import com.github.vaibhavsinha.kong.model.consumer.Consumer;
-import com.github.vaibhavsinha.kong.model.consumer.ConsumerList;
+import com.github.vaibhavsinha.kong.model.admin.consumer.Consumer;
+import com.github.vaibhavsinha.kong.model.admin.consumer.ConsumerList;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

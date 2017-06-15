@@ -1,7 +1,12 @@
 package com.github.vaibhavsinha.kong.impl;
 
-import com.github.vaibhavsinha.kong.api.*;
-import com.github.vaibhavsinha.kong.internal.*;
+import com.github.vaibhavsinha.kong.api.admin.*;
+import com.github.vaibhavsinha.kong.api.plugin.BasicAuthService;
+import com.github.vaibhavsinha.kong.api.plugin.KeyAuthService;
+import com.github.vaibhavsinha.kong.impl.helper.RetrofitServiceCreator;
+import com.github.vaibhavsinha.kong.impl.service.plugin.BasicAuthServiceImpl;
+import com.github.vaibhavsinha.kong.impl.service.plugin.KeyAuthServiceImpl;
+import com.github.vaibhavsinha.kong.internal.admin.*;
 import lombok.Data;
 
 /**
@@ -18,8 +23,12 @@ public class KongClient {
     private UpstreamService upstreamService;
     private TargetService targetService;
 
+    private BasicAuthService basicAuthService;
+    private KeyAuthService keyAuthService;
+
     public KongClient(String adminUrl) {
         RetrofitServiceCreator creator = new RetrofitServiceCreator(adminUrl);
+
         consumerService = creator.create(ConsumerService.class, RetrofitConsumerService.class);
         apiService = creator.create(ApiService.class, RetrofitApiService.class);
         pluginService = creator.create(PluginService.class, RetrofitPluginService.class);
@@ -27,6 +36,9 @@ public class KongClient {
         sniService = creator.create(SniService.class, RetrofitSniService.class);
         upstreamService = creator.create(UpstreamService.class, RetrofitUpstreamService.class);
         targetService = creator.create(TargetService.class, RetrofitTargetService.class);
+
+        basicAuthService = new BasicAuthServiceImpl(adminUrl);
+        keyAuthService = new KeyAuthServiceImpl(adminUrl);
     }
 
 }

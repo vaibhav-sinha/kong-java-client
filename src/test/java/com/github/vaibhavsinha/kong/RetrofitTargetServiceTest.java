@@ -1,16 +1,14 @@
 package com.github.vaibhavsinha.kong;
 
-import com.github.vaibhavsinha.kong.exception.KongClientException;
 import com.github.vaibhavsinha.kong.impl.KongClient;
-import com.github.vaibhavsinha.kong.model.target.Target;
-import com.github.vaibhavsinha.kong.model.target.TargetList;
+import com.github.vaibhavsinha.kong.model.admin.target.Target;
+import com.github.vaibhavsinha.kong.model.admin.target.TargetList;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**

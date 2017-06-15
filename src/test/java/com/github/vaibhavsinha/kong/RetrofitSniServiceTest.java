@@ -2,8 +2,8 @@ package com.github.vaibhavsinha.kong;
 
 import com.github.vaibhavsinha.kong.exception.KongClientException;
 import com.github.vaibhavsinha.kong.impl.KongClient;
-import com.github.vaibhavsinha.kong.model.sni.Sni;
-import com.github.vaibhavsinha.kong.model.sni.SniList;
+import com.github.vaibhavsinha.kong.model.admin.sni.Sni;
+import com.github.vaibhavsinha.kong.model.admin.sni.SniList;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

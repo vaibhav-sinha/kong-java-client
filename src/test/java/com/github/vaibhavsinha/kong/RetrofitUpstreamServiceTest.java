@@ -2,8 +2,8 @@ package com.github.vaibhavsinha.kong;
 
 import com.github.vaibhavsinha.kong.exception.KongClientException;
 import com.github.vaibhavsinha.kong.impl.KongClient;
-import com.github.vaibhavsinha.kong.model.upstream.Upstream;
-import com.github.vaibhavsinha.kong.model.upstream.UpstreamList;
+import com.github.vaibhavsinha.kong.model.admin.upstream.Upstream;
+import com.github.vaibhavsinha.kong.model.admin.upstream.UpstreamList;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

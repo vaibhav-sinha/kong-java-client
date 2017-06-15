@@ -2,8 +2,8 @@ package com.github.vaibhavsinha.kong;
 
 import com.github.vaibhavsinha.kong.exception.KongClientException;
 import com.github.vaibhavsinha.kong.impl.KongClient;
-import com.github.vaibhavsinha.kong.model.certificate.Certificate;
-import com.github.vaibhavsinha.kong.model.certificate.CertificateList;
+import com.github.vaibhavsinha.kong.model.admin.certificate.Certificate;
+import com.github.vaibhavsinha.kong.model.admin.certificate.CertificateList;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

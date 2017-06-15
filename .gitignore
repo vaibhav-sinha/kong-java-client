@@ -42,3 +42,5 @@ logs/
 zs/
 lib
 *.bak
+!/com/github/vaibhavsinha/kong/model/admin/target/
+!/src/main/java/com/github/vaibhavsinha/kong/model/admin/target/

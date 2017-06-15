@@ -2,16 +2,15 @@ package com.github.vaibhavsinha.kong;
 
 import com.github.vaibhavsinha.kong.exception.KongClientException;
 import com.github.vaibhavsinha.kong.impl.KongClient;
-import com.github.vaibhavsinha.kong.model.plugin.EnabledPlugins;
-import com.github.vaibhavsinha.kong.model.plugin.Plugin;
-import com.github.vaibhavsinha.kong.model.plugin.PluginList;
+import com.github.vaibhavsinha.kong.model.admin.plugin.EnabledPlugins;
+import com.github.vaibhavsinha.kong.model.admin.plugin.Plugin;
+import com.github.vaibhavsinha.kong.model.admin.plugin.PluginList;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
