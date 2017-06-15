@@ -4,11 +4,13 @@ import com.github.vaibhavsinha.kong.api.admin.*;
 import com.github.vaibhavsinha.kong.api.plugin.BasicAuthService;
 import com.github.vaibhavsinha.kong.api.plugin.HmacAuthService;
 import com.github.vaibhavsinha.kong.api.plugin.KeyAuthService;
+import com.github.vaibhavsinha.kong.api.plugin.OAuth2Service;
 import com.github.vaibhavsinha.kong.impl.helper.RetrofitServiceCreator;
 import com.github.vaibhavsinha.kong.impl.service.plugin.BasicAuthServiceImpl;
 import com.github.vaibhavsinha.kong.impl.service.plugin.HmacAuthServiceImpl;
 import com.github.vaibhavsinha.kong.impl.service.plugin.KeyAuthServiceImpl;
 import com.github.vaibhavsinha.kong.internal.admin.*;
+import com.github.vaibhavsinha.kong.internal.plugin.RetrofitOAuth2Service;
 import lombok.Data;
 
 /**
@@ -28,6 +30,7 @@ public class KongClient {
     private BasicAuthService basicAuthService;
     private KeyAuthService keyAuthService;
     private HmacAuthService hmacAuthService;
+    private OAuth2Service oAuth2Service;
 
     public KongClient(String adminUrl) {
         RetrofitServiceCreator creator = new RetrofitServiceCreator(adminUrl);
@@ -43,6 +46,7 @@ public class KongClient {
         basicAuthService = new BasicAuthServiceImpl(adminUrl);
         keyAuthService = new KeyAuthServiceImpl(adminUrl);
         hmacAuthService = new HmacAuthServiceImpl(adminUrl);
+        oAuth2Service = creator.create(OAuth2Service.class, RetrofitOAuth2Service.class);
     }
 
 }

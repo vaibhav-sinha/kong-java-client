@@ -1,6 +1,6 @@
 package com.github.vaibhavsinha.kong.model.admin.sni;
 
-import com.github.vaibhavsinha.kong.model.admin.common.AbstractEntityList;
+import com.github.vaibhavsinha.kong.model.common.AbstractEntityList;
 import lombok.Data;
 
 import java.util.List;

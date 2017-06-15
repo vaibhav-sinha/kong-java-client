@@ -1,4 +1,4 @@
-package com.github.vaibhavsinha.kong.model.admin.common;
+package com.github.vaibhavsinha.kong.model.common;
 
 import com.github.vaibhavsinha.kong.exception.KongClientException;
 
