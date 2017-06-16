@@ -1,4 +1,4 @@
-package com.github.vaibhavsinha.kong.internal.plugin;
+package com.github.vaibhavsinha.kong.internal.plugin.authentication;
 
 import com.github.vaibhavsinha.kong.model.plugin.authentication.oauth2.*;
 import retrofit2.Call;

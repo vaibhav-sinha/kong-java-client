@@ -1,8 +1,8 @@
 package com.github.vaibhavsinha.kong.impl.service.plugin;
 
-import com.github.vaibhavsinha.kong.api.plugin.KeyAuthService;
-import com.github.vaibhavsinha.kong.internal.plugin.RetrofitKeyAuthService;
-import com.github.vaibhavsinha.kong.model.plugin.authentication.key.KeyAuth;
+import com.github.vaibhavsinha.kong.api.plugin.authentication.KeyAuthService;
+import com.github.vaibhavsinha.kong.internal.plugin.authentication.RetrofitKeyAuthService;
+import com.github.vaibhavsinha.kong.model.plugin.authentication.key.KeyAuthCredential;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -23,6 +23,6 @@ public class KeyAuthServiceImpl implements KeyAuthService {
 
     @Override
     public void addCredentials(String consumerIdOrUsername, String key) {
-        retrofitKeyAuthService.addCredentials(consumerIdOrUsername, new KeyAuth(key));
+        retrofitKeyAuthService.addCredentials(consumerIdOrUsername, new KeyAuthCredential(key));
     }
 }

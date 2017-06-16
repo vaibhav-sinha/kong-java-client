@@ -2,12 +2,14 @@ package com.github.vaibhavsinha.kong.model.plugin.authentication.hmac;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * Created by vaibhav on 15/06/17.
  */
 @Data
-public class HmacAuth {
+@NoArgsConstructor
+public class HmacAuthCredential {
 
     @SerializedName("id")
     private String id;
@@ -20,7 +22,7 @@ public class HmacAuth {
     @SerializedName("created_at")
     private Long createdAt;
 
-    public HmacAuth(String username, String secret) {
+    public HmacAuthCredential(String username, String secret) {
         this.username = username;
         this.secret = secret;
     }

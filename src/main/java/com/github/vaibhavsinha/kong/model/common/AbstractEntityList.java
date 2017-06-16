@@ -14,7 +14,9 @@ import java.util.Map;
  */
 public abstract class AbstractEntityList {
 
-    public abstract String getNext();
+    public String getNext() {
+        return null;
+    }
 
     public String getOffset() {
         if(getNext() == null) {

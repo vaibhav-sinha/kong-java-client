@@ -2,12 +2,14 @@ package com.github.vaibhavsinha.kong.model.plugin.authentication.key;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * Created by vaibhav on 15/06/17.
  */
 @Data
-public class KeyAuth {
+@NoArgsConstructor
+public class KeyAuthCredential {
 
     @SerializedName("id")
     private String id;
@@ -18,7 +20,7 @@ public class KeyAuth {
     @SerializedName("created_at")
     private Long createdAt;
 
-    public KeyAuth(String key) {
+    public KeyAuthCredential(String key) {
         this.key = key;
     }
 }

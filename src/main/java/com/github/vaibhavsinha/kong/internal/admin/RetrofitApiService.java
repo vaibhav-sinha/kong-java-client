@@ -23,7 +23,7 @@ public interface RetrofitApiService {
     Call<Api> createOrUpdateApi(@Body Api request);
 
     @DELETE("/apis/{id}")
-    Call<Api> deleteApi(@Path("id") String nameOrId);
+    Call<Void> deleteApi(@Path("id") String nameOrId);
 
     @GET("/apis/")
     Call<ApiList> listApis(@Query("id") String id, @Query("upstream_url") String upstreamUrl, @Query("name") String name, @Query("retries") Long retries,  @Query("size") Long size, @Query("offset") String offset);

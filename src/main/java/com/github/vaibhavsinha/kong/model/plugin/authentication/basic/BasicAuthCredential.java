@@ -2,12 +2,14 @@ package com.github.vaibhavsinha.kong.model.plugin.authentication.basic;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * Created by vaibhav on 15/06/17.
  */
 @Data
-public class BasicAuth {
+@NoArgsConstructor
+public class BasicAuthCredential {
 
     @SerializedName("id")
     private String id;
@@ -20,7 +22,7 @@ public class BasicAuth {
     @SerializedName("created_at")
     private Long createdAt;
 
-    public BasicAuth(String username, String password) {
+    public BasicAuthCredential(String username, String password) {
         this.username = username;
         this.password = password;
     }

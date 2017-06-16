@@ -23,7 +23,7 @@ public interface RetrofitSniService {
     Call<Sni> createOrUpdateSni(@Body Sni request);
 
     @DELETE("/snis/{name}")
-    Call<Sni> deleteSni(@Path("name") String name);
+    Call<Void> deleteSni(@Path("name") String name);
 
     @GET("/snis/")
     Call<SniList> listSnis();

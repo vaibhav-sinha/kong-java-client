@@ -23,7 +23,7 @@ public interface RetrofitCertificateService {
     Call<Certificate> createOrUpdateCertificate(@Body Certificate request);
 
     @DELETE("/certificates/{id}")
-    Call<Certificate> deleteCertificate(@Path("id") String sniOrId);
+    Call<Void> deleteCertificate(@Path("id") String sniOrId);
 
     @GET("/certificates/")
     Call<CertificateList> listCertificates();

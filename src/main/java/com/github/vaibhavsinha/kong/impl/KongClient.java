@@ -1,16 +1,16 @@
 package com.github.vaibhavsinha.kong.impl;
 
 import com.github.vaibhavsinha.kong.api.admin.*;
-import com.github.vaibhavsinha.kong.api.plugin.BasicAuthService;
-import com.github.vaibhavsinha.kong.api.plugin.HmacAuthService;
-import com.github.vaibhavsinha.kong.api.plugin.KeyAuthService;
-import com.github.vaibhavsinha.kong.api.plugin.OAuth2Service;
+import com.github.vaibhavsinha.kong.api.plugin.authentication.BasicAuthService;
+import com.github.vaibhavsinha.kong.api.plugin.authentication.HmacAuthService;
+import com.github.vaibhavsinha.kong.api.plugin.authentication.KeyAuthService;
+import com.github.vaibhavsinha.kong.api.plugin.authentication.OAuth2Service;
 import com.github.vaibhavsinha.kong.impl.helper.RetrofitServiceCreator;
 import com.github.vaibhavsinha.kong.impl.service.plugin.BasicAuthServiceImpl;
 import com.github.vaibhavsinha.kong.impl.service.plugin.HmacAuthServiceImpl;
 import com.github.vaibhavsinha.kong.impl.service.plugin.KeyAuthServiceImpl;
 import com.github.vaibhavsinha.kong.internal.admin.*;
-import com.github.vaibhavsinha.kong.internal.plugin.RetrofitOAuth2Service;
+import com.github.vaibhavsinha.kong.internal.plugin.authentication.RetrofitOAuth2Service;
 import lombok.Data;
 
 /**

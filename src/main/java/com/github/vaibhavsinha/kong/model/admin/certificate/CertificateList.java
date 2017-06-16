@@ -12,8 +12,4 @@ import java.util.List;
 public class CertificateList extends AbstractEntityList {
     Long total;
     List<Certificate> data;
-
-    public String getNext() {
-        return null;
-    }
 }

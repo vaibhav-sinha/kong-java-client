@@ -1,4 +1,4 @@
-package com.github.vaibhavsinha.kong.api.plugin;
+package com.github.vaibhavsinha.kong.api.plugin.authentication;
 
 /**
  * Created by vaibhav on 15/06/17.

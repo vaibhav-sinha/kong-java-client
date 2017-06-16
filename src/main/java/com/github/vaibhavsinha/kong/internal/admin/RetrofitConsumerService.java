@@ -23,7 +23,7 @@ public interface RetrofitConsumerService {
     Call<Consumer> createOrUpdateConsumer(@Body Consumer request);
 
     @DELETE("/consumers/{id}")
-    Call<Consumer> deleteConsumer(@Path("id") String usernameOrId);
+    Call<Void> deleteConsumer(@Path("id") String usernameOrId);
 
     @GET("/consumers/")
     Call<ConsumerList> listConsumers(@Query("id") String id, @Query("custom_id") String customId, @Query("username") String username, @Query("size") Long size, @Query("offset") String offset);

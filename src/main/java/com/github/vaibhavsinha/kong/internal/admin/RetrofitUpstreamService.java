@@ -23,7 +23,7 @@ public interface RetrofitUpstreamService {
     Call<Upstream> createOrUpdateUpstream(@Body Upstream request);
 
     @DELETE("/upstreams/{id}")
-    Call<Upstream> deleteUpstream(@Path("id") String nameOrId);
+    Call<Void> deleteUpstream(@Path("id") String nameOrId);
 
     @GET("/upstreams/")
     Call<UpstreamList> listUpstreams(@Query("id") String id, @Query("slots") Integer slots, @Query("name") String name, @Query("size") Long size, @Query("offset") String offset);

@@ -1,8 +1,8 @@
 package com.github.vaibhavsinha.kong.impl.service.plugin;
 
-import com.github.vaibhavsinha.kong.api.plugin.BasicAuthService;
-import com.github.vaibhavsinha.kong.internal.plugin.RetrofitBasicAuthService;
-import com.github.vaibhavsinha.kong.model.plugin.authentication.basic.BasicAuth;
+import com.github.vaibhavsinha.kong.api.plugin.authentication.BasicAuthService;
+import com.github.vaibhavsinha.kong.internal.plugin.authentication.RetrofitBasicAuthService;
+import com.github.vaibhavsinha.kong.model.plugin.authentication.basic.BasicAuthCredential;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -23,6 +23,6 @@ public class BasicAuthServiceImpl implements BasicAuthService {
 
     @Override
     public void addCredentials(String consumerIdOrUsername, String username, String password) {
-        retrofitBasicAuthService.addCredentials(consumerIdOrUsername, new BasicAuth(username, password));
+        retrofitBasicAuthService.addCredentials(consumerIdOrUsername, new BasicAuthCredential(username, password));
     }
 }

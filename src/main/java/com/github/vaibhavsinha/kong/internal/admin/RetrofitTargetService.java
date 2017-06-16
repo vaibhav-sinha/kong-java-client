@@ -14,7 +14,7 @@ public interface RetrofitTargetService {
     Call<Target> createTarget(@Path("id") String upstreamNameOrId, @Body Target request);
 
     @DELETE("/upstreams/{id}/targets/{target}")
-    Call<Target> deleteTarget(@Path("id") String upstreamNameOrId, @Path("target") String target);
+    Call<Void> deleteTarget(@Path("id") String upstreamNameOrId, @Path("target") String target);
 
     @GET("/upstreams/{id}/targets")
     Call<TargetList> listTargets(@Path("id") String upstreamNameOrId, @Query("id") String id, @Query("weight") Integer weight, @Query("target") String target, @Query("size") Long size, @Query("offset") String offset);

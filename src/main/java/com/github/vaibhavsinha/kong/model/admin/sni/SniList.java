@@ -12,8 +12,4 @@ import java.util.List;
 public class SniList extends AbstractEntityList {
     Long total;
     List<Sni> data;
-
-    public String getNext() {
-        return null;
-    }
 }

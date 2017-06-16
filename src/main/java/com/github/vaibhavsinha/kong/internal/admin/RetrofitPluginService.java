@@ -24,7 +24,7 @@ public interface RetrofitPluginService {
     Call<Plugin> createOrUpdatePlugin(@Body Plugin request);
 
     @DELETE("/plugins/{id}")
-    Call<Plugin> deletePlugin(@Path("id") String nameOrId);
+    Call<Void> deletePlugin(@Path("id") String nameOrId);
 
     @GET("/plugins/")
     Call<PluginList> listPlugins(@Query("id") String id, @Query("api_id") String apiId, @Query("consumer_id") String consumerId, @Query("name") String name, @Query("size") Long size, @Query("offset") String offset);

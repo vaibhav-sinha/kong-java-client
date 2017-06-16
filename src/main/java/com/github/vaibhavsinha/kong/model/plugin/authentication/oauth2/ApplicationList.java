@@ -12,9 +12,4 @@ import java.util.List;
 public class ApplicationList extends AbstractEntityList {
     Long total;
     List<Application> data;
-
-    @Override
-    public String getNext() {
-        return null;
-    }
 }

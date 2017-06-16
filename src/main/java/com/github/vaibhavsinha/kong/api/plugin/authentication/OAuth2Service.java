@@ -1,4 +1,4 @@
-package com.github.vaibhavsinha.kong.api.plugin;
+package com.github.vaibhavsinha.kong.api.plugin.authentication;
 
 import com.github.vaibhavsinha.kong.model.plugin.authentication.oauth2.*;
 
