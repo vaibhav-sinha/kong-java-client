@@ -19,7 +19,7 @@ public class Plugin {
     @SerializedName("name")
     private String name;
     @SerializedName("config")
-    private Map<String, Object> config;
+    private Object config;
     @SerializedName("enabled")
     private Boolean enabled;
     @SerializedName("created_at")

@@ -8,7 +8,7 @@ import com.github.vaibhavsinha.kong.model.admin.plugin.PluginList;
  * Created by vaibhav on 13/06/17.
  */
 public interface PluginService {
-    Plugin createPlugin(Plugin request);
+    Plugin addPlugin(Plugin request);
     Plugin getPlugin(String nameOrId);
     Plugin updatePlugin(String nameOrId, Plugin request);
     Plugin createOrUpdatePlugin(Plugin request);

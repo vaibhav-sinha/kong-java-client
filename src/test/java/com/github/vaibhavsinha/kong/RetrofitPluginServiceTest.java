@@ -31,7 +31,7 @@ public class RetrofitPluginServiceTest {
         Plugin request = new Plugin();
         request.setName("jwt");
 
-        Plugin response = kongClient.getPluginService().createPlugin(request);
+        Plugin response = kongClient.getPluginService().addPlugin(request);
         System.out.print(response);
         Assert.assertEquals(request.getName(), response.getName());
     }

@@ -12,7 +12,7 @@ import retrofit2.http.*;
 public interface RetrofitPluginService {
 
     @POST("/plugins/")
-    Call<Plugin> createPlugin(@Body Plugin request);
+    Call<Plugin> addPlugin(@Body Plugin request);
 
     @GET("/plugins/{id}")
     Call<Plugin> getPlugin(@Path("id") String nameOrId);
