@@ -23,8 +23,17 @@ Besides the Admin APIs, Plugin configuration is also supported.
   * OAuth2
   * LDAP
 
-Support for more plugins is being added.
+### Security Plugins
+  * ACL
+  * IP Restriction
 
-For example, to add credentials for a new Consumer for Basic Auth
+### Traffic Control Plugins
+  * Rate Limiting
+  * Request Size Limiting
+  * Request Termination
+
+Only those plugins are supported which might need configuration through code. For example, adding rate limit for a new consumer when there is a new signup. Plugins which require one time configuration are not supported.
+
+Example Usage: To add credentials for a new Consumer for Basic Auth
 
     kongClient.getBasicAuthService().addCredentials("con-su-mer-id", "username", "password");
