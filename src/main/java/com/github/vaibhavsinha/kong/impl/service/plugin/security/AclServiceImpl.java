@@ -3,7 +3,7 @@ package com.github.vaibhavsinha.kong.impl.service.plugin.security;
 import com.github.vaibhavsinha.kong.api.plugin.security.AclService;
 import com.github.vaibhavsinha.kong.exception.KongClientException;
 import com.github.vaibhavsinha.kong.internal.plugin.security.RetrofitAclService;
-import com.github.vaibhavsinha.kong.model.plugin.security.Acl;
+import com.github.vaibhavsinha.kong.model.plugin.security.acl.Acl;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

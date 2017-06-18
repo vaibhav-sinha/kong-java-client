@@ -1,6 +1,6 @@
 package com.github.vaibhavsinha.kong.internal.plugin.security;
 
-import com.github.vaibhavsinha.kong.model.plugin.security.Acl;
+import com.github.vaibhavsinha.kong.model.plugin.security.acl.Acl;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;

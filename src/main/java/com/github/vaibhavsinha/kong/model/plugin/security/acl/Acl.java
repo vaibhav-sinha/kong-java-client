@@ -1,4 +1,4 @@
-package com.github.vaibhavsinha.kong.model.plugin.security;
+package com.github.vaibhavsinha.kong.model.plugin.security.acl;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
