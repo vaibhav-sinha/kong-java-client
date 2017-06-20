@@ -2,6 +2,16 @@
 
 [Kong](https://getkong.org/) is a popular Open Source API Gateway. Kong Java Client makes it easy to configure the API Gateway through your code.
 
+## Installation
+
+The artifact is available on Maven Central Repository and be downloaded by adding the following dependency in pom.xml
+
+    <dependency>
+        <groupId>com.github.vaibhav-sinha</groupId>
+        <artifactId>kong-java-client</artifactId>
+        <version>0.1.0</version>
+    </dependency>
+    
 ## Usage
 
     KongClient kongClient = new KongClient("http://localhost:8001");
