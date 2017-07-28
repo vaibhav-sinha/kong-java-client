@@ -16,14 +16,9 @@ import java.util.List;
 /**
  * Created by vaibhav on 12/06/17.
  */
-public class RetrofitUpstreamServiceTest {
+public class RetrofitUpstreamServiceTest  extends BaseTest {
 
-    private KongClient kongClient;
 
-    @Before
-    public void before() {
-        kongClient = new KongClient("http://localhost:8001");
-    }
 
     @Test
     public void testCreateUpstream() throws IOException {

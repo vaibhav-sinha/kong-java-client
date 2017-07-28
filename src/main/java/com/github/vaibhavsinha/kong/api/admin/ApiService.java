@@ -10,6 +10,7 @@ public interface ApiService {
     Api createApi(Api request);
     Api getApi(String nameOrId);
     Api updateApi(String nameOrId, Api request);
+    @Deprecated
     Api createOrUpdateApi(Api request);
     Api deleteApi(String usernameOrId);
     ApiList listApis(String id, String upstreamUrl, String name, Long retries, Long size, String offset);

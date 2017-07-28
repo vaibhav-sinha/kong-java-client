@@ -15,7 +15,7 @@ public class RetrofitServiceCreator {
     public RetrofitServiceCreator(String baseUrl) {
         retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(CustomGsonConverterFactory.create()) // should not use this GsonConverterFactory
                 .build();
     }
 

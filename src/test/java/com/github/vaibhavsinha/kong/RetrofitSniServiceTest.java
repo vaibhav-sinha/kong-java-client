@@ -17,14 +17,9 @@ import java.util.UUID;
 /**
  * Created by vaibhav on 12/06/17.
  */
-public class RetrofitSniServiceTest {
+public class RetrofitSniServiceTest  extends BaseTest {
 
-    private KongClient kongClient;
 
-    @Before
-    public void before() {
-        kongClient = new KongClient("http://localhost:8001");
-    }
 
     @Test
     public void testCreateSni() throws IOException {
