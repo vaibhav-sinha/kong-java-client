@@ -14,6 +14,10 @@ public class Api {
     private Long createdAt;
     @SerializedName("hosts")
     private List<String> hosts = null;
+    @SerializedName("uris")
+    private List<String> uris = null;
+    @SerializedName("methods")
+    private List<String> methods = null;
     @SerializedName("http_if_terminated")
     private Boolean httpIfTerminated;
     @SerializedName("https_only")
