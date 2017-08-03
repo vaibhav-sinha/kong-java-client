@@ -11,24 +11,24 @@ import retrofit2.http.*;
  */
 public interface RetrofitPluginService {
 
-    @POST("/plugins/")
+    @POST("plugins/")
     Call<Plugin> addPlugin(@Body Plugin request);
 
-    @GET("/plugins/{id}")
+    @GET("plugins/{id}")
     Call<Plugin> getPlugin(@Path("id") String nameOrId);
 
-    @PATCH("/plugins/{id}")
+    @PATCH("plugins/{id}")
     Call<Plugin> updatePlugin(@Path("id") String nameOrId, @Body Plugin request);
 
-    @PUT("/plugins/")
+    @PUT("plugins/")
     Call<Plugin> createOrUpdatePlugin(@Body Plugin request);
 
-    @DELETE("/plugins/{id}")
+    @DELETE("plugins/{id}")
     Call<Void> deletePlugin(@Path("id") String nameOrId);
 
-    @GET("/plugins/")
+    @GET("plugins/")
     Call<PluginList> listPlugins(@Query("id") String id, @Query("api_id") String apiId, @Query("consumer_id") String consumerId, @Query("name") String name, @Query("size") Long size, @Query("offset") String offset);
 
-    @GET("/plugins/enabled")
+    @GET("plugins/enabled")
     Call<EnabledPlugins> listEnabledPlugins();
 }

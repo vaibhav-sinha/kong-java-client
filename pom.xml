@@ -6,7 +6,7 @@
 
     <groupId>com.github.vaibhav-sinha</groupId>
     <artifactId>kong-java-client</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
 
     <packaging>jar</packaging>
 

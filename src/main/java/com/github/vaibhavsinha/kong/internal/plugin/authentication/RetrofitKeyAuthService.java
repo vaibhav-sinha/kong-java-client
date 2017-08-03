@@ -12,6 +12,6 @@ import retrofit2.http.Path;
  */
 public interface RetrofitKeyAuthService {
 
-    @POST("/consumers/{id}/key-auth")
+    @POST("consumers/{id}/key-auth")
     Call<BasicAuthCredential> addCredentials(@Path("id") String consumerIdOrUsername, @Body KeyAuthCredential request);
 }

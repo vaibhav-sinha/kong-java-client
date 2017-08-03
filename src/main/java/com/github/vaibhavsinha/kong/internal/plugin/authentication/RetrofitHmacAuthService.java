@@ -11,6 +11,6 @@ import retrofit2.http.Path;
  */
 public interface RetrofitHmacAuthService {
 
-    @POST("/consumers/{id}/hmac-auth")
+    @POST("consumers/{id}/hmac-auth")
     Call<HmacAuthCredential> addCredentials(@Path("id") String consumerIdOrUsername, @Body HmacAuthCredential request);
 }
