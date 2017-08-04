@@ -22,6 +22,7 @@ public class KongClient {
     private ConsumerService consumerService;
     private ApiService apiService;
     private PluginService pluginService;
+    private PluginRepoService pluginRepoService;
     private CertificateService certificateService;
     private SniService sniService;
     private UpstreamService upstreamService;
@@ -38,6 +39,8 @@ public class KongClient {
         consumerService = creator.create(ConsumerService.class, RetrofitConsumerService.class);
         apiService = creator.create(ApiService.class, RetrofitApiService.class);
         pluginService = creator.create(PluginService.class, RetrofitPluginService.class);
+        pluginRepoService = creator.create(PluginRepoService.class, RetrofitPluginRepoService.class);
+
         certificateService = creator.create(CertificateService.class, RetrofitCertificateService.class);
         sniService = creator.create(SniService.class, RetrofitSniService.class);
         upstreamService = creator.create(UpstreamService.class, RetrofitUpstreamService.class);

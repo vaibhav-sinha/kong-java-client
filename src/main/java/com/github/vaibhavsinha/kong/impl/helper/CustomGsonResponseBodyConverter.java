@@ -3,7 +3,7 @@ package com.github.vaibhavsinha.kong.impl.helper;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
-import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.MediaType;
 import okhttp3.ResponseBody;
 import retrofit2.Converter;
@@ -15,7 +15,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.Charset;
 
-@Log
+@Slf4j
 final class CustomGsonResponseBodyConverter<T> implements Converter<ResponseBody, T> {
 
 	private static final Charset UTF_8 = Charset.forName("UTF-8");
@@ -35,7 +35,7 @@ final class CustomGsonResponseBodyConverter<T> implements Converter<ResponseBody
 
 		if(response == null || response.isEmpty()) {
 			//It may response empty body...
-			log.warning("Why Response empty body ???");
+			log.debug("Response empty body...");
 			return null;
 		}
 

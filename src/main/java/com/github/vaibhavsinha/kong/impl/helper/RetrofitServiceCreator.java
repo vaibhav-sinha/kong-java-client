@@ -1,7 +1,9 @@
 package com.github.vaibhavsinha.kong.impl.helper;
 
+//import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+//import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+//import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.lang.reflect.Proxy;
 
@@ -15,7 +17,9 @@ public class RetrofitServiceCreator {
     public RetrofitServiceCreator(String baseUrl) {
         retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
-                .addConverterFactory(CustomGsonConverterFactory.create()) // should not use this GsonConverterFactory
+                .addConverterFactory(CustomGsonConverterFactory.create())   // replace GsonConverterFactory
+//                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())  // add rxJava1 support
+//                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())   // add rxJava2 support
                 .build();
     }
 

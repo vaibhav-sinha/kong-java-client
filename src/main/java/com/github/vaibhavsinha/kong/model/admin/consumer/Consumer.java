@@ -8,10 +8,14 @@ import lombok.Data;
  */
 @Data
 public class Consumer {
+
     String id;
+
     @SerializedName("custom_id")
     String customId;
+
     @SerializedName("created_at")
     Long createdAt;
+
     String username;
 }

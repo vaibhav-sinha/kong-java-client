@@ -54,9 +54,9 @@ public class UrlUtil {
 
 	public static void main(String[] args) throws Exception {
 
-		String url1 = "http://www.test.com/simulate/getCode?access_token=4ddb06a7c9c44ea1a1f3043ee8de9938&expires_in=7200";
+		String url1 = "http://kong.test.com/simulate/getCode?access_token=4ddb06a7c9c44ea1a1f3043ee8de9938&expires_in=7200";
 
-		String url2 = "http://www.test.com/simulate/getCode#access_token=4ddb06a7c9c44ea1a1f3043ee8de9938&expires_in=7200";
+		String url2 = "http://kong.test.com/simulate/getCode#access_token=4ddb06a7c9c44ea1a1f3043ee8de9938&expires_in=7200";
 
 		System.out.println(new Gson().toJson(splitQueryString(url1)));
 

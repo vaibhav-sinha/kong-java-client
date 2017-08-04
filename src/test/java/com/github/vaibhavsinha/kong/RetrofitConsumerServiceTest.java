@@ -6,7 +6,9 @@ import com.github.vaibhavsinha.kong.model.admin.consumer.Consumer;
 import com.github.vaibhavsinha.kong.model.admin.consumer.ConsumerList;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,60 +17,66 @@ import java.util.List;
 /**
  * Created by vaibhav on 12/06/17.
  */
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RetrofitConsumerServiceTest extends BaseTest {
 
+    private String CONSUMER_ID = "12faf661-3529-40c6-98e0-5a54894ad22f";
+    private String CONSUMER_USERNAME = "";
+    private String CONSUMER_CUSTOM_ID = "1234-5678-9012";
 
     @Test
-    public void testCreateConsumer() throws IOException {
+    public void test01_CreateConsumer() throws IOException {
         Consumer request = new Consumer();
-        request.setCustomId("1234-5678-9012");
+        request.setId(CONSUMER_ID);
+        request.setCustomId(CONSUMER_CUSTOM_ID);
 
         Consumer response = kongClient.getConsumerService().createConsumer(request);
-        System.out.print(response);
+        print(response);
         Assert.assertEquals(request.getCustomId(), response.getCustomId());
     }
 
     @Test
-    public void testGetConsumer() throws IOException {
-        Consumer response = kongClient.getConsumerService().getConsumer("fd609820-0021-4fdf-9c80-bc692c3e4fe6");
-        System.out.print(response);
-        Assert.assertEquals("fd609820-0021-4fdf-9c80-bc692c3e4fe6", response.getId());
+    public void test02_GetConsumer() throws IOException {
+        Consumer response = kongClient.getConsumerService().getConsumer(CONSUMER_ID);
+        print(response);
+        Assert.assertEquals(CONSUMER_ID, response.getId());
     }
 
     @Test(expected = KongClientException.class)
-    public void exceptionTest() throws IOException {
+    public void test03_exceptionTest() throws IOException {
         kongClient.getConsumerService().getConsumer("some-random-id");
     }
 
     @Test
-    public void testUpdateConsumer() throws IOException {
+    public void test04_UpdateConsumer() throws IOException {
         Consumer request = new Consumer();
         request.setCustomId("1234-5678-9012-3456");
 
-        Consumer response = kongClient.getConsumerService().updateConsumer("fd609820-0021-4fdf-9c80-bc692c3e4fe6", request);
-        System.out.print(response);
+        Consumer response = kongClient.getConsumerService().updateConsumer(CONSUMER_ID, request);
+        print(response);
         Assert.assertEquals(request.getCustomId(), response.getCustomId());
     }
 
-    @Test
-    public void testCreateOrUpdateConsumer() throws IOException {
+//    @Test
+    public void test05_CreateOrUpdateConsumer() throws IOException {
         Consumer request = new Consumer();
-        request.setCustomId("1234-5678-9012-3456-78");
-        request.setId("fd609820-0021-4fdf-9c80-bc692c3e4fe6");
+        request.setCustomId(CONSUMER_CUSTOM_ID);
+        request.setId(CONSUMER_ID);
+//        request.setUsername(CONSUMER_USERNAME);
         request.setCreatedAt(123456789L);
 
         Consumer response = kongClient.getConsumerService().createOrUpdateConsumer(request);
-        System.out.print(response);
+        print(response);
         Assert.assertEquals(request.getCustomId(), response.getCustomId());
     }
 
     @Test
-    public void testDeleteConsumer() throws IOException {
-        kongClient.getConsumerService().deleteConsumer("fd609820-0021-4fdf-9c80-bc692c3e4fe6");
+    public void test09_DeleteConsumer() throws IOException {
+        kongClient.getConsumerService().deleteConsumer(CONSUMER_ID);
     }
 
     @Test
-    public void testListConsumers() throws IOException {
+    public void test10_ListConsumers() throws IOException {
         List<Consumer> consumers = new ArrayList<>();
         ConsumerList consumerList = kongClient.getConsumerService().listConsumers(null, null, null, 1L, null);
         consumers.addAll(consumerList.getData());
@@ -76,7 +84,9 @@ public class RetrofitConsumerServiceTest extends BaseTest {
             consumerList = kongClient.getConsumerService().listConsumers(null, null, null, 1L, consumerList.getOffset());
             consumers.addAll(consumerList.getData());
         }
-        System.out.println(consumers);
+        print(consumers);
         Assert.assertNotEquals(consumers.size(), 0);
     }
+
+
 }

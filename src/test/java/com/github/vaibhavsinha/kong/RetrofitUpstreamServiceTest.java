@@ -20,7 +20,7 @@ public class RetrofitUpstreamServiceTest  extends BaseTest {
 
 
 
-    @Test
+//    @Test
     public void testCreateUpstream() throws IOException {
         Upstream request = new Upstream();
         request.setName("local.com");
@@ -30,14 +30,14 @@ public class RetrofitUpstreamServiceTest  extends BaseTest {
         Assert.assertEquals(request.getName(), response.getName());
     }
 
-    @Test
+//    @Test
     public void testGetUpstream() throws IOException {
         Upstream response = kongClient.getUpstreamService().getUpstream("0ba0f245-0fda-43a1-a96f-ac33e1b4cf41");
         System.out.print(response);
         Assert.assertEquals("local.com", response.getName());
     }
 
-    @Test
+//    @Test
     public void testListUpstreams() throws IOException {
         List<Upstream> upstreams = new ArrayList<>();
         UpstreamList upstreamList = kongClient.getUpstreamService().listUpstreams(null, null, null, 1L, null);
@@ -50,12 +50,12 @@ public class RetrofitUpstreamServiceTest  extends BaseTest {
         Assert.assertNotEquals(upstreams.size(), 0);
     }
 
-    @Test(expected = KongClientException.class)
+//    @Test(expected = KongClientException.class)
     public void exceptionTest() throws IOException {
         kongClient.getUpstreamService().getUpstream("some-random-id");
     }
 
-    @Test
+//    @Test
     public void testUpdateUpstream() throws IOException {
         Upstream request = new Upstream();
         request.setName("local.com");
@@ -65,7 +65,7 @@ public class RetrofitUpstreamServiceTest  extends BaseTest {
         Assert.assertEquals(request.getName(), response.getName());
     }
 
-    @Test
+//    @Test
     public void testCreateOrUpdateUpstream() throws IOException {
         Upstream request = new Upstream();
         request.setName("local.com");
@@ -77,7 +77,7 @@ public class RetrofitUpstreamServiceTest  extends BaseTest {
         Assert.assertEquals(request.getName(), response.getName());
     }
 
-    @Test
+//    @Test
     public void testDeleteUpstream() throws IOException {
         kongClient.getUpstreamService().deleteUpstream("0ba0f245-0fda-43a1-a96f-ac33e1b4cf41");
     }

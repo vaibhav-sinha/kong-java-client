@@ -8,11 +8,17 @@ import com.github.vaibhavsinha.kong.model.admin.plugin.PluginList;
  * Created by vaibhav on 13/06/17.
  */
 public interface PluginService {
+
     Plugin addPlugin(Plugin request);
+
     Plugin getPlugin(String nameOrId);
+
     Plugin updatePlugin(String nameOrId, Plugin request);
+
+    @Deprecated
     Plugin createOrUpdatePlugin(Plugin request);
-    Plugin deletePlugin(String nameOrId);
+
+    void deletePlugin(String nameOrId);
+
     PluginList listPlugins(String id, String apiId, String consumerId, String name, Long size, String offset);
-    EnabledPlugins listEnabledPlugins();
 }

@@ -18,7 +18,7 @@ public class RetrofitTargetServiceTest  extends BaseTest {
 
 
 
-    @Test
+//    @Test
     public void testCreateTarget() throws IOException {
         Target request = new Target();
         request.setTarget("1.2.3.4:80");
@@ -28,7 +28,7 @@ public class RetrofitTargetServiceTest  extends BaseTest {
         Assert.assertEquals(request.getTarget(), response.getTarget());
     }
 
-    @Test
+//    @Test
     public void testListTargets() throws IOException {
         List<Target> targets = new ArrayList<>();
         TargetList targetList = kongClient.getTargetService().listTargets("local.com", null, null, null, 1L, null);
@@ -41,7 +41,7 @@ public class RetrofitTargetServiceTest  extends BaseTest {
         Assert.assertNotEquals(targets.size(), 0);
     }
 
-    @Test
+//    @Test
     public void testListActiveTargets() throws IOException {
         List<Target> targets = new ArrayList<>();
         TargetList targetList = kongClient.getTargetService().listActiveTargets("local.com");
@@ -54,7 +54,7 @@ public class RetrofitTargetServiceTest  extends BaseTest {
         Assert.assertNotEquals(targets.size(), 0);
     }
 
-    @Test
+//    @Test
     public void testDeleteTarget() throws IOException {
         kongClient.getTargetService().deleteTarget("local.com", "1.2.3.4:80");
     }
