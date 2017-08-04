@@ -26,11 +26,10 @@ public class RetrofitBodyExtractorInvocationHandler implements InvocationHandler
         Method method1 = proxied.getClass().getMethod(methodName, parameterTypes);
         Call call = (Call) method1.invoke(proxied, args);
         Response response = call.execute();
+        log.debug("Http Request:  " + response.raw().request());
+        log.debug("Http Response: " + response.raw().toString());
         if(!response.isSuccessful()) {
             throw new KongClientException(response.errorBody() != null ? response.errorBody().string() : String.valueOf(response.code()));
-        }
-        if(response.body() == null) {
-            log.debug("Response with empty body: " + response);
         }
         return response.body();
     }

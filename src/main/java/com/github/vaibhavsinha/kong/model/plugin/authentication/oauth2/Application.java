@@ -13,14 +13,19 @@ public class Application {
 
     @SerializedName("id")
     private String id;
+
     @SerializedName("name")
     private String name;
+
     @SerializedName("client_secret")
     private String clientSecret;
+
     @SerializedName("client_id")
     private String clientId;
+
     @SerializedName("redirect_uri")
     private List<String> redirectUri;
+
     @SerializedName("created_at")
     private Long createdAt;
 
