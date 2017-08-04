@@ -2,6 +2,7 @@ package com.github.vaibhavsinha.kong.internal.admin;
 
 import com.github.vaibhavsinha.kong.model.admin.api.Api;
 import com.github.vaibhavsinha.kong.model.admin.api.ApiList;
+import com.github.vaibhavsinha.kong.model.admin.plugin.PluginList;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -27,4 +28,8 @@ public interface RetrofitApiService {
 
     @GET("apis/")
     Call<ApiList> listApis(@Query("id") String id, @Query("upstream_url") String upstreamUrl, @Query("name") String name, @Query("retries") Long retries,  @Query("size") Long size, @Query("offset") String offset);
+
+
+    @GET("apis/{id}/plugins")
+    Call<PluginList> listApiPlugins(@Path("id") String nameOrId);
 }
