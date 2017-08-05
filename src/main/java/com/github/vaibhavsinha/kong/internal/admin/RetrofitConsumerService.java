@@ -10,21 +10,21 @@ import retrofit2.http.*;
  */
 public interface RetrofitConsumerService {
 
-    @POST("/consumers/")
+    @POST("consumers/")
     Call<Consumer> createConsumer(@Body Consumer request);
 
-    @GET("/consumers/{id}")
+    @GET("consumers/{id}")
     Call<Consumer> getConsumer(@Path("id") String usernameOrId);
 
-    @PATCH("/consumers/{id}")
+    @PATCH("consumers/{id}")
     Call<Consumer> updateConsumer(@Path("id") String usernameOrId, @Body Consumer request);
 
-    @PUT("/consumers/")
+    @PUT("consumers/")
     Call<Consumer> createOrUpdateConsumer(@Body Consumer request);
 
-    @DELETE("/consumers/{id}")
+    @DELETE("consumers/{id}")
     Call<Void> deleteConsumer(@Path("id") String usernameOrId);
 
-    @GET("/consumers/")
+    @GET("consumers/")
     Call<ConsumerList> listConsumers(@Query("id") String id, @Query("custom_id") String customId, @Query("username") String username, @Query("size") Long size, @Query("offset") String offset);
 }

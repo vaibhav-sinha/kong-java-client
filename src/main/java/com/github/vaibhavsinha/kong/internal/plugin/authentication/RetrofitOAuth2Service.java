@@ -11,18 +11,18 @@ import java.util.Map;
  */
 public interface RetrofitOAuth2Service {
 
-    @POST("/consumers/{id}/oauth2")
+    @POST("consumers/{id}/oauth2")
     Call<Application> createApplication(@Path("id") String consumerId, @Body Application request);
 
-    @POST("/oauth2_tokens")
+    @POST("oauth2_tokens")
     Call<Token> createToken(@Body Token request);
 
-    @GET("/oauth2")
+    @GET("oauth2")
     Call<ApplicationList> listApplications(@Query("client_id") String clientId);
 
-    @POST("/oauth2/authorize")
+    @POST("oauth2/authorize")
     Call<Map<String, Object>> authorize(@Body Authorization request);
 
-    @POST("/oauth2/token")
+    @POST("oauth2/token")
     Call<Token> refreshToken(@Body Refresh request);
 }

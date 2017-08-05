@@ -11,6 +11,6 @@ import retrofit2.http.Path;
  */
 public interface RetrofitBasicAuthService {
 
-    @POST("/consumers/{id}/basic-auth")
+    @POST("consumers/{id}/basic-auth")
     Call<BasicAuthCredential> addCredentials(@Path("id") String consumerIdOrUsername, @Body BasicAuthCredential request);
 }

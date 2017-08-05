@@ -10,12 +10,12 @@ import retrofit2.http.*;
  */
 public interface RetrofitJwtService {
 
-    @POST("/consumers/{consumer}/jwt")
+    @POST("consumers/{consumer}/jwt")
     Call<JwtCredential> addCredentials(@Path("consumer") String consumerIdOrUsername, @Body JwtCredential request);
 
-    @DELETE("/consumers/{consumer}/jwt/{id}")
+    @DELETE("consumers/{consumer}/jwt/{id}")
     Call<Void> deleteCredentials(@Path("consumer") String consumerIdOrUsername, @Path("id") String id);
 
-    @GET("/consumers/{consumer}/jwt")
+    @GET("consumers/{consumer}/jwt")
     Call<JwtCredentialList> listCredentials(@Path("consumer") String consumerIdOrUsername);
 }
