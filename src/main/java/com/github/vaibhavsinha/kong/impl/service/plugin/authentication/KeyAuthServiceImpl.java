@@ -11,17 +11,15 @@ import java.io.IOException;
 
 /**
  * Created by vaibhav on 15/06/17.
+ *
+ * Updated by fanhua on 2017-08-07.
  */
 public class KeyAuthServiceImpl implements KeyAuthService {
 
     private RetrofitKeyAuthService retrofitKeyAuthService;
 
-    public KeyAuthServiceImpl(String adminUrl) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(adminUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        retrofitKeyAuthService = retrofit.create(RetrofitKeyAuthService.class);
+    public KeyAuthServiceImpl(RetrofitKeyAuthService retrofitKeyAuthService) {
+        this.retrofitKeyAuthService = retrofitKeyAuthService;
     }
 
     @Override

@@ -1,11 +1,9 @@
 package com.github.vaibhavsinha.kong;
 
 import com.github.vaibhavsinha.kong.exception.KongClientException;
-import com.github.vaibhavsinha.kong.impl.KongClient;
 import com.github.vaibhavsinha.kong.model.admin.consumer.Consumer;
 import com.github.vaibhavsinha.kong.model.admin.consumer.ConsumerList;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
@@ -31,14 +29,14 @@ public class RetrofitConsumerServiceTest extends BaseTest {
         request.setCustomId(CONSUMER_CUSTOM_ID);
 
         Consumer response = kongClient.getConsumerService().createConsumer(request);
-        print(response);
+        printJson(response);
         Assert.assertEquals(request.getCustomId(), response.getCustomId());
     }
 
     @Test
     public void test02_GetConsumer() throws IOException {
         Consumer response = kongClient.getConsumerService().getConsumer(CONSUMER_ID);
-        print(response);
+        printJson(response);
         Assert.assertEquals(CONSUMER_ID, response.getId());
     }
 
@@ -53,7 +51,7 @@ public class RetrofitConsumerServiceTest extends BaseTest {
         request.setCustomId("1234-5678-9012-3456");
 
         Consumer response = kongClient.getConsumerService().updateConsumer(CONSUMER_ID, request);
-        print(response);
+        printJson(response);
         Assert.assertEquals(request.getCustomId(), response.getCustomId());
     }
 
@@ -66,7 +64,7 @@ public class RetrofitConsumerServiceTest extends BaseTest {
         request.setCreatedAt(123456789L);
 
         Consumer response = kongClient.getConsumerService().createOrUpdateConsumer(request);
-        print(response);
+        printJson(response);
         Assert.assertEquals(request.getCustomId(), response.getCustomId());
     }
 
@@ -84,7 +82,7 @@ public class RetrofitConsumerServiceTest extends BaseTest {
             consumerList = kongClient.getConsumerService().listConsumers(null, null, null, 1L, consumerList.getOffset());
             consumers.addAll(consumerList.getData());
         }
-        print(consumers);
+        printJson(consumers);
         Assert.assertNotEquals(consumers.size(), 0);
     }
 

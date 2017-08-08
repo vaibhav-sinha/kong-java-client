@@ -11,17 +11,15 @@ import java.io.IOException;
 
 /**
  * Created by vaibhav on 18/06/17.
+ *
+ * Updated by fanhua on 2017-08-07.
  */
 public class AclServiceImpl implements AclService {
 
     private RetrofitAclService retrofitAclService;
 
-    public AclServiceImpl(String adminUrl) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(adminUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        retrofitAclService = retrofit.create(RetrofitAclService.class);
+    public AclServiceImpl(RetrofitAclService retrofitAclService) {
+        this.retrofitAclService = retrofitAclService;
     }
     @Override
     public void associateConsumer(String usernameOrId, String group) {

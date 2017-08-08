@@ -11,11 +11,12 @@ import org.junit.runners.MethodSorters;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
  * Created by vaibhav on 12/06/17.
+ *
+ * Updated by fanhua on 2017-08-04.
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RetrofitApiServiceTest extends BaseTest {
@@ -44,14 +45,14 @@ public class RetrofitApiServiceTest extends BaseTest {
         request.setHosts(Arrays.asList(API_HOSTS));
 
         Api response = kongClient.getApiService().createApi(request);
-        print(response);
+        printJson(response);
         Assert.assertEquals(request.getName(), response.getName());
     }
 
     @Test
     public void test02_GetApi() throws IOException {
         Api response = kongClient.getApiService().getApi(API_NAME_V2);
-        print(response);
+        printJson(response);
         Assert.assertEquals(API_NAME_V2, response.getName());
     }
 
@@ -66,7 +67,7 @@ public class RetrofitApiServiceTest extends BaseTest {
         request.setName(API_NAME_V2_NEW);
 
         Api response = kongClient.getApiService().updateApi(API_ID_V2, request);
-        print(response);
+        printJson(response);
         Assert.assertEquals(request.getName(), response.getName());
     }
 
@@ -86,7 +87,7 @@ public class RetrofitApiServiceTest extends BaseTest {
         request.setCreatedAt(System.currentTimeMillis());
         Api response = kongClient.getApiService().createOrUpdateApi(request);
         Assert.assertNotNull(response);
-        print(response);
+        printJson(response);
         Assert.assertEquals(request.getName(), response.getName());
     }
 
@@ -105,7 +106,7 @@ public class RetrofitApiServiceTest extends BaseTest {
             apiList = kongClient.getApiService().listApis(null, null, null, null, 1L, apiList.getOffset());
             apis.addAll(apiList.getData());
         }
-        print(apis);
+        printJson(apis);
         Assert.assertNotEquals(apis.size(), 0);
     }
 

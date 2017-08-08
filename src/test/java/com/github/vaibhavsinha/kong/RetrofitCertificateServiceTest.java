@@ -1,5 +1,6 @@
 package com.github.vaibhavsinha.kong;
 
+import com.github.vaibhavsinha.kong.BaseTest;
 import com.github.vaibhavsinha.kong.exception.KongClientException;
 import com.github.vaibhavsinha.kong.impl.KongClient;
 import com.github.vaibhavsinha.kong.model.admin.certificate.Certificate;

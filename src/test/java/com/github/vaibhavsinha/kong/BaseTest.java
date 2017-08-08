@@ -4,13 +4,19 @@ import com.github.vaibhavsinha.kong.impl.KongClient;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.apache.log4j.helpers.ISO8601DateFormat;
 import org.junit.Before;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
+/**
+ * Created by fanhua on 2017-07-28.
+ */
 public class BaseTest {
 
-	public static final String KONG_ADMIN_URL = "http://kong.test.com:8001";
-	public static final String KONG_API_URL = "https://kong.test.com:8443";
+	public static final String KONG_ADMIN_URL = "http://test.com:8001";
+	public static final String KONG_API_URL = "https://test.com:8443";
 
 	protected KongClient kongClient;
 
@@ -18,7 +24,9 @@ public class BaseTest {
 
 	@Before
 	public void before() {
-		kongClient = new KongClient(KONG_ADMIN_URL);
+
+		kongClient = new KongClient(KONG_ADMIN_URL, KONG_API_URL, true);
+
 		gson = new GsonBuilder()
 //				.excludeFieldsWithoutExposeAnnotation() 	//不导出实体中没有用@Expose注解的属性
 				.enableComplexMapKeySerialization() 		//支持Map的key为复杂对象的形式
@@ -32,8 +40,15 @@ public class BaseTest {
 	}
 
 
-	protected void print(Object object) {
+	protected void printJson(Object object) {
 		System.out.println(gson.toJson(object));
 	}
 
+	protected void printString(String str) {
+		System.out.println(str);
+	}
+
+	protected static String getCurrentDateTimeString() {
+		return new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
+	}
 }

@@ -5,6 +5,9 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
+/**
+ * Created by fanhua on 2017-08-05.
+ */
 public interface RetrofitPluginRepoService {
 
     @GET("/plugins/enabled")

@@ -1,11 +1,9 @@
 package com.github.vaibhavsinha.kong.api.admin;
 
-import com.github.vaibhavsinha.kong.model.admin.plugin.EnabledPlugins;
 import com.github.vaibhavsinha.kong.model.admin.plugin.Plugin;
 import com.github.vaibhavsinha.kong.model.admin.plugin.PluginList;
 
 /**
- * Created by vaibhav on 13/06/17.
  *
  * You can add a plugin in four different ways:
  *  For every API and Consumer. Don't set api_id and consumer_id.
@@ -14,19 +12,20 @@ import com.github.vaibhavsinha.kong.model.admin.plugin.PluginList;
  *  For a specific Consumer and API. Set both api_id and consumer_id.
  * Note that not all plugins allow to specify consumer_id. Check the plugin documentation.
  */
-public interface PluginService {
+public interface ApiPluginService {
 
 
-    Plugin addPlugin(Plugin request);
+    Plugin addPluginForApi(String apiNameOrId, Plugin plugin);
 
-    Plugin getPlugin(String nameOrId);
+    Plugin getPluginForApi(String apiNameOrId, String pluginId);
 
-    Plugin updatePlugin(String nameOrId, Plugin request);
+    Plugin updatePluginForApi(String apiNameOrId, String pluginNameOrId, Plugin request);
 
     @Deprecated
-    Plugin createOrUpdatePlugin(Plugin request);
+    Plugin createOrUpdatePluginForApi(String apiNameOrId, Plugin plugin);
 
-    void deletePlugin(String nameOrId);
+    void deletePluginForApi(String apiNameOrId, String pluginNameOrId);
 
-    PluginList listPlugins(String id, String apiId, String consumerId, String name, Long size, String offset);
+    PluginList listPluginsForApi(String apiNameOrId, String pluginNameOrId, String apiId, String consumerId, String name, Long size, String offset);
+
 }

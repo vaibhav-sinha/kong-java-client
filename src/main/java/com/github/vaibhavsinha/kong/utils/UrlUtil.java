@@ -9,7 +9,9 @@ import java.net.URLDecoder;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-
+/**
+ * Created by fanhua on 2017-07-28.
+ */
 public class UrlUtil {
 
 	public static Map<String, String> splitQueryString(String urlString) {

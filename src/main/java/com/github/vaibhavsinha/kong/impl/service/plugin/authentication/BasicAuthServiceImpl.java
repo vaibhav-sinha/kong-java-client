@@ -11,17 +11,15 @@ import java.io.IOException;
 
 /**
  * Created by vaibhav on 15/06/17.
+ *
+ * Updated by fanhua on 2017-08-07.
  */
 public class BasicAuthServiceImpl implements BasicAuthService {
 
     private RetrofitBasicAuthService retrofitBasicAuthService;
 
-    public BasicAuthServiceImpl(String adminUrl) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(adminUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        retrofitBasicAuthService = retrofit.create(RetrofitBasicAuthService.class);
+    public BasicAuthServiceImpl(RetrofitBasicAuthService retrofitBasicAuthService) {
+        this.retrofitBasicAuthService = retrofitBasicAuthService;
     }
 
     @Override

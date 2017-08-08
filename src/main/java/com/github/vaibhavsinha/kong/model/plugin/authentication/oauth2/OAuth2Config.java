@@ -7,6 +7,8 @@ import java.util.List;
 
 /**
  * Created by vaibhav on 17/06/17.
+ *
+ * Updated by fanhua on 2017-08-04.
  */
 @Data
 public class OAuth2Config {
