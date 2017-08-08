@@ -44,6 +44,26 @@ Besides the Admin APIs, Plugin configuration is also supported.
 
 Only those plugins are supported which might need configuration through code. For example, adding rate limit for a new consumer when there is a new signup. Plugins which require one time configuration are not supported.
 
-Example Usage: To add credentials for a new Consumer for Basic Auth
+### Example Usage
+
+To add credentials for a new Consumer for Basic Auth
 
     kongClient.getBasicAuthService().addCredentials("con-su-mer-id", "username", "password");
+
+    
+To add OAuth2 Plugin for an API
+
+    //See: RetrofitApiPluginServiceTest.java
+    kongClient.getApiPluginService().addPluginForApi(API_NAME, oauth2Plugin);
+    
+To add an Application for a Consumer for OAuth2
+
+    //See: RetrofitOAuth2ManageServiceTest.java
+    kongClient.getOAuth2ManageService().createConsumerApplication(CONSUMER_ID, 
+        new Application(appName, appRedirectUrl, appClientId, appClientSecret));
+        
+To do the OAuth2 Process (Authorization Code)
+
+    //See: RetrofitOAuth2ProcessServiceTest.java
+    kongClient.getOAuth2ProcessService().authorize(API_URI, authorizationRequest);
+    kongClient.getOAuth2ProcessService().grantToken(API_URI, grantTokenRequest)
