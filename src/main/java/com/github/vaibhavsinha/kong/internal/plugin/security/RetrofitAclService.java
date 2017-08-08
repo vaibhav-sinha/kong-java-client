@@ -10,6 +10,6 @@ import retrofit2.http.Path;
  * Created by vaibhav on 18/06/17.
  */
 public interface RetrofitAclService {
-    @POST("/consumers/{id}/acls")
+    @POST("consumers/{id}/acls")
     Call<Void> associateConsumer(@Path("id") String consumerIdOrUsername, @Body Acl request);
 }

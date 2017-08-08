@@ -10,22 +10,22 @@ import retrofit2.http.*;
  */
 public interface RetrofitUpstreamService {
 
-    @POST("/upstreams/")
+    @POST("upstreams/")
     Call<Upstream> createUpstream(@Body Upstream request);
 
-    @GET("/upstreams/{id}")
+    @GET("upstreams/{id}")
     Call<Upstream> getUpstream(@Path("id") String nameOrId);
 
-    @PATCH("/upstreams/{id}")
+    @PATCH("upstreams/{id}")
     Call<Upstream> updateUpstream(@Path("id") String nameOrId, @Body Upstream request);
 
-    @PUT("/upstreams/")
+    @PUT("upstreams/")
     Call<Upstream> createOrUpdateUpstream(@Body Upstream request);
 
-    @DELETE("/upstreams/{id}")
+    @DELETE("upstreams/{id}")
     Call<Void> deleteUpstream(@Path("id") String nameOrId);
 
-    @GET("/upstreams/")
+    @GET("upstreams/")
     Call<UpstreamList> listUpstreams(@Query("id") String id, @Query("slots") Integer slots, @Query("name") String name, @Query("size") Long size, @Query("offset") String offset);
 
 }

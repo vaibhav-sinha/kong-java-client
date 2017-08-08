@@ -10,22 +10,22 @@ import retrofit2.http.*;
  */
 public interface RetrofitCertificateService {
 
-    @POST("/certificates/")
+    @POST("certificates/")
     Call<Certificate> createCertificate(@Body Certificate request);
 
-    @GET("/certificates/{id}")
+    @GET("certificates/{id}")
     Call<Certificate> getCertificate(@Path("id") String sniOrId);
 
-    @PATCH("/certificates/{id}")
+    @PATCH("certificates/{id}")
     Call<Certificate> updateCertificate(@Path("id") String sniOrId, @Body Certificate request);
 
-    @PUT("/certificates/")
+    @PUT("certificates/")
     Call<Certificate> createOrUpdateCertificate(@Body Certificate request);
 
-    @DELETE("/certificates/{id}")
+    @DELETE("certificates/{id}")
     Call<Void> deleteCertificate(@Path("id") String sniOrId);
 
-    @GET("/certificates/")
+    @GET("certificates/")
     Call<CertificateList> listCertificates();
 
 }

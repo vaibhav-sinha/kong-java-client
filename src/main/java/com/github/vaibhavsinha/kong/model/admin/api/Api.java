@@ -18,6 +18,12 @@ public class Api {
 	private Object hosts; //sometimes array, sometimes map
 //	private List<String> hosts = null;
 
+	@SerializedName("uris")
+	private List<String> uris;
+
+	@SerializedName("methods")
+	private List<String> methods;
+
 	@SerializedName("http_if_terminated")
 	private Boolean httpIfTerminated;
 
@@ -50,10 +56,4 @@ public class Api {
 
 	@SerializedName("upstream_url")
 	private String upstreamUrl;
-
-	@SerializedName("uris")
-	private List<String> uris;
-
-	@SerializedName("methods")
-    private List<String> methods;
 }
