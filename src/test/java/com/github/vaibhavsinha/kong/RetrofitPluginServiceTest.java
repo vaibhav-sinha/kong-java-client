@@ -21,13 +21,17 @@ import java.util.List;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RetrofitPluginServiceTest  extends BaseTest {
 
+
     private String PLUGIN_ID = "61e5b656-7b68-4761-aeae-d9c94a5782c8";
     private String PLUGIN_NAME = "jwt";
+
+    private String API_ID = "3a9fa5b9-5f99-4ab8-a949-d676becd30b3";
 
     @Test
     public void test11_CreatePlugin() throws IOException {
         Plugin request = new Plugin();
         request.setId(PLUGIN_ID);
+        request.setApiId(API_ID); // make sure you put the valid API_ID here, if you don't put API_ID, the the plugin will take effect on all APIs
         request.setName(PLUGIN_NAME);
 
         Plugin response = kongClient.getPluginService().addPlugin(request);

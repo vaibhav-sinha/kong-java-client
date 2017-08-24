@@ -21,7 +21,6 @@ public class RetrofitOAuth2ManageServiceTest extends BaseTest {
 
     // ------------------------------------------------------------------------------------
 
-    private static String appId = "7eaacdab-8c86-423b-a809-a744c0c3beb4";
     private static String appName = "testApp-20170807113035732";
     private static String appClientId = "dc80e4ebf33445faafad96c1b4701d48";
     private static String appClientSecret = "22435791881e40dc97fd05f28eb86488";
@@ -53,7 +52,7 @@ public class RetrofitOAuth2ManageServiceTest extends BaseTest {
     @Test
     public void test02_GetOAuth2App() throws IOException {
 
-        Application appResponse = kongClient.getOAuth2ManageService().getConsumerApplication(CONSUMER_ID, appId);
+        Application appResponse = kongClient.getOAuth2ManageService().getConsumerApplication(CONSUMER_ID, appClientId);
 
         printJson(appResponse);
 
@@ -67,9 +66,9 @@ public class RetrofitOAuth2ManageServiceTest extends BaseTest {
     public void test03_UpdateOAuth2App() throws IOException {
 
         Application appRequest = new Application(appName + "-2", appRedirectUrl);
-        appRequest.setId(appId); //important
+        appRequest.setId(appClientId); //important
 
-        Application appResponse = kongClient.getOAuth2ManageService().updateConsumerApplication(CONSUMER_ID, appId, appRequest);
+        Application appResponse = kongClient.getOAuth2ManageService().updateConsumerApplication(CONSUMER_ID, appClientId, appRequest);
 
         printJson(appResponse);
 
@@ -81,7 +80,7 @@ public class RetrofitOAuth2ManageServiceTest extends BaseTest {
     @Test
     public void test04_DeleteOAuth2App() throws IOException {
 
-        kongClient.getOAuth2ManageService().deleteConsumerApplication(CONSUMER_ID, appId);
+        kongClient.getOAuth2ManageService().deleteConsumerApplication(CONSUMER_ID, appClientId);
 
     }
 
@@ -99,7 +98,7 @@ public class RetrofitOAuth2ManageServiceTest extends BaseTest {
     public void test06_ListOAuth2Apps() throws IOException {
 
         ApplicationList appList = kongClient.getOAuth2ManageService().listClientApplications(
-                appId, null, null, null, CONSUMER_ID);
+                null, appName, null, null, CONSUMER_ID);
 
         printJson(appList);
     }
