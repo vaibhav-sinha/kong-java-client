@@ -10,8 +10,12 @@ import java.util.List;
  *
  * Updated by fanhua on 2017-08-04.
  */
+@Deprecated
 @Data
 public class OAuth2Config {
+
+    @SerializedName("provision_key")
+    private String provisionKey;
 
     @SerializedName("scopes")
     List<String> scopes;

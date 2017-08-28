@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.github.vaibhavsinha.kong.model.admin.plugin.OAuth2Config;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -20,10 +21,12 @@ import com.github.vaibhavsinha.kong.model.admin.plugin.PluginList;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RetrofitApiPluginServiceTest extends BaseTest {
 
-    private String PLUGIN_ID = "61e5b656-7b68-4761-aeae-d9c94a5782c9";
-    private String PLUGIN_NAME = "jwt";
+    private String PLUGIN_ID = "d975cb2e-6190-4c22-bc98-efe4abe10a65";
+    private String PLUGIN_NAME = "oauth2";
+    private OAuth2Config OAUTH2_CONFIG = new OAuth2Config();
+    private String OAUTH2_PROVISION_KEY = "1f2b8d4baadb4b6f93c82b1599cad575";
 
-    private String API_NAME = "test";
+    private String API_NAME = "test2";
 
     // -------------------------------------------------------------------------------
 
@@ -32,6 +35,14 @@ public class RetrofitApiPluginServiceTest extends BaseTest {
         Plugin request = new Plugin();
         request.setId(PLUGIN_ID);
         request.setName(PLUGIN_NAME);
+
+        OAUTH2_CONFIG.setProvisionKey(OAUTH2_PROVISION_KEY);
+        OAUTH2_CONFIG.setEnableAuthorizationCode(true);
+        OAUTH2_CONFIG.setEnableImplicitGrant(true);
+        OAUTH2_CONFIG.setEnablePasswordGrant(true);
+        OAUTH2_CONFIG.setEnableClientCredentials(true);
+        OAUTH2_CONFIG.setTokenExpiration(7200);
+        request.setConfig(OAUTH2_CONFIG);
 
         Plugin response = kongClient.getApiPluginService().addPluginForApi(API_NAME, request);
         printJson(response);
