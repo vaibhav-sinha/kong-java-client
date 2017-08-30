@@ -19,10 +19,10 @@ public interface RetrofitOAuth2ProcessService {
     // OAuth2 Process ---------------------------------------------------------------------------------------------------
 
     @POST("/{api_uri}/oauth2/authorize")
-    Call<Map<String, Object>> authorize(@Path("api_uri") String apiUri, @Body AuthorizationRequest request);
+    Call<Map<String, Object>> authorize(@Path(value = "api_uri", encoded = true) String apiUri, @Body AuthorizationRequest request);
 
 
     @POST("/{api_uri}/oauth2/token")
-    Call<Token> grantToken(@Path("api_uri") String apiUri, @Body GrantTokenRequest request);
+    Call<Token> grantToken(@Path(value = "api_uri", encoded = true) String apiUri, @Body GrantTokenRequest request);
 
 }

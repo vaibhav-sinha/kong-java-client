@@ -21,12 +21,12 @@ import com.github.vaibhavsinha.kong.model.admin.plugin.PluginList;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RetrofitApiPluginServiceTest extends BaseTest {
 
-    private String PLUGIN_ID = "d975cb2e-6190-4c22-bc98-efe4abe10a65";
+    private String PLUGIN_ID = "3d3ee453-161c-449b-a468-42f06b7c0dc5";
     private String PLUGIN_NAME = "oauth2";
     private OAuth2Config OAUTH2_CONFIG = new OAuth2Config();
     private String OAUTH2_PROVISION_KEY = "1f2b8d4baadb4b6f93c82b1599cad575";
 
-    private String API_NAME = "test2";
+    private String API_NAME = "Test.V2.Api";
 
     // -------------------------------------------------------------------------------
 

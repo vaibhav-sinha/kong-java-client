@@ -21,17 +21,17 @@ import java.util.List;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RetrofitApiServiceTest extends BaseTest {
 
-    private String API_NAME_V1 = "V1_Api";
+    private String API_NAME_V1 = "Test_V1_Api";
 //    private String API_ID_V1 = "f813a66b-bac6-4951-831b-f04d53ae0bf0"; // not exist
     private String API_ID_V1 = "3a9fa5b9-5f99-4ab8-a949-d676becd30b3";
 
     private String API_NAME_V2 = "Test_V2_Api";
-    private String API_NAME_V2_NEW = "Test_V2_Api_new";
+    private String API_NAME_V2_NEW = "Test.V2.Api";
     private String API_ID_V2 = "f813a66b-bac6-4952-831b-f04d53ae0bf0";
 
     private String API_UPSTREAM_URL = "http://httpbin.org";
     private String[] API_HOSTS = new String[] {"example.com"};
-    private String[] API_URIS = new String[] {"/exampleV2"};
+    private String[] API_URIS = new String[] {"/v1/example", "/v2/example"};
 
 
     // -----------------------------------------------------------------------
@@ -42,7 +42,8 @@ public class RetrofitApiServiceTest extends BaseTest {
         request.setId(API_ID_V2);
         request.setName(API_NAME_V2);
         request.setUpstreamUrl(API_UPSTREAM_URL);
-        request.setHosts(Arrays.asList(API_HOSTS));
+//        request.setHosts(Arrays.asList(API_HOSTS));
+        request.setUris(Arrays.asList(API_URIS));
 
         Api response = kongClient.getApiService().createApi(request);
         printJson(response);
@@ -58,7 +59,7 @@ public class RetrofitApiServiceTest extends BaseTest {
 
     @Test(expected = KongClientException.class)
     public void test03_exceptionTest() throws IOException {
-        kongClient.getApiService().getApi("some-random-id");
+        kongClient.getApiService().getApi("some.random.id");
     }
 
     @Test

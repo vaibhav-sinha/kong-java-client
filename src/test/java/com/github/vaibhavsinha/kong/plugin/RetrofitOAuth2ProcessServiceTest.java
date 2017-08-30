@@ -15,7 +15,7 @@ import org.junit.runners.MethodSorters;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RetrofitOAuth2ProcessServiceTest extends BaseTest {
 
-    private static String API_URI = "test"; // which actually "/test", without the slash
+    private static String API_URI = "v2/example"; // which actually "/v2/example", without the slash
 
     private static String API_PROVISION_KEY = "1f2b8d4baadb4b6f93c82b1599cad575";
 
