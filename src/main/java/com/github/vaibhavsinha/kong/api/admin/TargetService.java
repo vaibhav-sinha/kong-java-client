@@ -6,6 +6,7 @@ import com.github.vaibhavsinha.kong.model.admin.target.TargetList;
 /**
  * Created by vaibhav on 13/06/17.
  */
+@Deprecated
 public interface TargetService {
     Target createTarget(String upstreamNameOrId, Target request);
     Target deleteTarget(String upstreamNameOrId, String target);

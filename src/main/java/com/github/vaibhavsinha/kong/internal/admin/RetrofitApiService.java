@@ -20,6 +20,7 @@ public interface RetrofitApiService {
     @PATCH("apis/{id}")
     Call<Api> updateApi(@Path("id") String nameOrId, @Body Api request);
 
+    @Deprecated
     @PUT("apis/")
     Call<Api> createOrUpdateApi(@Body Api request);
 

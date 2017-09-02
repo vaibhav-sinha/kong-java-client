@@ -10,6 +10,8 @@ import java.util.List;
  */
 @Data
 public class ApplicationList extends AbstractEntityList {
+
     Long total;
+
     List<Application> data;
 }

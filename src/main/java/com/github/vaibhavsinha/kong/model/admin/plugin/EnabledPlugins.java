@@ -10,6 +10,8 @@ import java.util.List;
  */
 @Data
 public class EnabledPlugins {
+
     @SerializedName("enabled_plugins")
     List<String> enabledPlugins;
+
 }

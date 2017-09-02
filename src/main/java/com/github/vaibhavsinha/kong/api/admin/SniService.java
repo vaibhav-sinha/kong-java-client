@@ -6,6 +6,7 @@ import com.github.vaibhavsinha.kong.model.admin.sni.SniList;
 /**
  * Created by vaibhav on 13/06/17.
  */
+@Deprecated
 public interface SniService {
     Sni createSni(Sni request);
     Sni getSni(String name);

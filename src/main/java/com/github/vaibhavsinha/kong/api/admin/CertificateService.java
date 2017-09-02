@@ -6,6 +6,7 @@ import com.github.vaibhavsinha.kong.model.admin.certificate.CertificateList;
 /**
  * Created by vaibhav on 13/06/17.
  */
+@Deprecated
 public interface CertificateService {
     Certificate createCertificate(Certificate request);
     Certificate getCertificate(String sniOrId);
