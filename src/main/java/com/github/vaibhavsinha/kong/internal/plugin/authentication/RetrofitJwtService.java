@@ -7,6 +7,8 @@ import retrofit2.http.*;
 
 /**
  * Created by vaibhav on 16/06/17.
+ *
+ * Updated by dvilela on 17/10/17.
  */
 public interface RetrofitJwtService {
 
@@ -17,5 +19,5 @@ public interface RetrofitJwtService {
     Call<Void> deleteCredentials(@Path("consumer") String consumerIdOrUsername, @Path("id") String id);
 
     @GET("consumers/{consumer}/jwt")
-    Call<JwtCredentialList> listCredentials(@Path("consumer") String consumerIdOrUsername);
+    Call<JwtCredentialList> listCredentials(@Path("consumer") String consumerIdOrUsername, @Query("size") Long size, @Query("offset") String offset);
 }

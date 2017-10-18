@@ -1,21 +1,14 @@
 package com.github.vaibhavsinha.kong.impl;
 
 import com.github.vaibhavsinha.kong.api.admin.*;
-import com.github.vaibhavsinha.kong.api.plugin.authentication.BasicAuthService;
-import com.github.vaibhavsinha.kong.api.plugin.authentication.HmacAuthService;
-import com.github.vaibhavsinha.kong.api.plugin.authentication.KeyAuthService;
-import com.github.vaibhavsinha.kong.api.plugin.authentication.OAuth2ManageService;
-import com.github.vaibhavsinha.kong.api.plugin.authentication.OAuth2ProcessService;
+import com.github.vaibhavsinha.kong.api.plugin.authentication.*;
 import com.github.vaibhavsinha.kong.impl.helper.RetrofitServiceCreator;
 import com.github.vaibhavsinha.kong.impl.service.plugin.authentication.BasicAuthServiceImpl;
 import com.github.vaibhavsinha.kong.impl.service.plugin.authentication.HmacAuthServiceImpl;
+import com.github.vaibhavsinha.kong.impl.service.plugin.authentication.JwtAuthServiceImpl;
 import com.github.vaibhavsinha.kong.impl.service.plugin.authentication.KeyAuthServiceImpl;
 import com.github.vaibhavsinha.kong.internal.admin.*;
-import com.github.vaibhavsinha.kong.internal.plugin.authentication.RetrofitBasicAuthService;
-import com.github.vaibhavsinha.kong.internal.plugin.authentication.RetrofitHmacAuthService;
-import com.github.vaibhavsinha.kong.internal.plugin.authentication.RetrofitKeyAuthService;
-import com.github.vaibhavsinha.kong.internal.plugin.authentication.RetrofitOAuth2ManageService;
-import com.github.vaibhavsinha.kong.internal.plugin.authentication.RetrofitOAuth2ProcessService;
+import com.github.vaibhavsinha.kong.internal.plugin.authentication.*;
 import com.github.vaibhavsinha.kong.utils.HttpsUtil;
 import lombok.Data;
 import okhttp3.OkHttpClient;
@@ -24,6 +17,8 @@ import okhttp3.OkHttpClient;
  * Created by vaibhav on 12/06/17.
  *
  * Updated by fanhua on 2017-08-07.
+ *
+ * Updated by dvilela on 17/10/17.
  */
 @Data
 public class KongClient {
@@ -43,6 +38,7 @@ public class KongClient {
     private BasicAuthService basicAuthService;
     private KeyAuthService keyAuthService;
     private HmacAuthService hmacAuthService;
+    private JwtService jwtService;
 
     private OAuth2ProcessService oAuth2ProcessService;
     private OAuth2ManageService oAuth2ManageService;
@@ -59,12 +55,13 @@ public class KongClient {
             throw new IllegalArgumentException("The adminUrl cannot be null or empty!");
         }
 
-        if (proxyUrl == null || proxyUrl.isEmpty()) {
-            throw new IllegalArgumentException("The proxyUrl cannot be null or empty!");
-        }
-
-        if (needOAuth2Support && (!proxyUrl.startsWith("https://"))) {
-            throw new IllegalArgumentException("The proxyUrl must use https if you need OAuth2 support!");
+        if (needOAuth2Support) {
+            if (proxyUrl == null || proxyUrl.isEmpty()) {
+                throw new IllegalArgumentException("The proxyUrl cannot be null or empty!");
+            }
+            if (!proxyUrl.startsWith("https://")) {
+                throw new IllegalArgumentException("The proxyUrl must use https if you need OAuth2 support!");
+            }
         }
 
 
@@ -89,6 +86,7 @@ public class KongClient {
             basicAuthService = new BasicAuthServiceImpl(retrofitServiceCreatorForAdminUrl.createRetrofitService(RetrofitBasicAuthService.class));
             keyAuthService = new KeyAuthServiceImpl(retrofitServiceCreatorForAdminUrl.createRetrofitService(RetrofitKeyAuthService.class));
             hmacAuthService = new HmacAuthServiceImpl(retrofitServiceCreatorForAdminUrl.createRetrofitService(RetrofitHmacAuthService.class));
+            jwtService = new JwtAuthServiceImpl(retrofitServiceCreatorForAdminUrl.createRetrofitService(RetrofitJwtService.class));
         }
 
         if(needOAuth2Support) {
