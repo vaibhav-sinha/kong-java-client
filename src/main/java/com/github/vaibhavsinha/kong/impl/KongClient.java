@@ -2,16 +2,17 @@ package com.github.vaibhavsinha.kong.impl;
 
 import com.github.vaibhavsinha.kong.api.admin.*;
 import com.github.vaibhavsinha.kong.api.plugin.authentication.*;
+import com.github.vaibhavsinha.kong.api.plugin.security.AclService;
 import com.github.vaibhavsinha.kong.impl.helper.RetrofitServiceCreator;
 import com.github.vaibhavsinha.kong.impl.service.plugin.authentication.BasicAuthServiceImpl;
 import com.github.vaibhavsinha.kong.impl.service.plugin.authentication.HmacAuthServiceImpl;
 import com.github.vaibhavsinha.kong.impl.service.plugin.authentication.JwtAuthServiceImpl;
 import com.github.vaibhavsinha.kong.impl.service.plugin.authentication.KeyAuthServiceImpl;
+import com.github.vaibhavsinha.kong.impl.service.plugin.security.AclServiceImpl;
 import com.github.vaibhavsinha.kong.internal.admin.*;
 import com.github.vaibhavsinha.kong.internal.plugin.authentication.*;
-import com.github.vaibhavsinha.kong.utils.HttpsUtil;
+import com.github.vaibhavsinha.kong.internal.plugin.security.RetrofitAclService;
 import lombok.Data;
-import okhttp3.OkHttpClient;
 
 /**
  * Created by vaibhav on 12/06/17.
@@ -42,6 +43,8 @@ public class KongClient {
 
     private OAuth2ProcessService oAuth2ProcessService;
     private OAuth2ManageService oAuth2ManageService;
+
+    private AclService aclService;
 
 
     public KongClient(String adminUrl) {
@@ -87,6 +90,7 @@ public class KongClient {
             keyAuthService = new KeyAuthServiceImpl(retrofitServiceCreatorForAdminUrl.createRetrofitService(RetrofitKeyAuthService.class));
             hmacAuthService = new HmacAuthServiceImpl(retrofitServiceCreatorForAdminUrl.createRetrofitService(RetrofitHmacAuthService.class));
             jwtService = new JwtAuthServiceImpl(retrofitServiceCreatorForAdminUrl.createRetrofitService(RetrofitJwtService.class));
+            aclService = new AclServiceImpl(retrofitServiceCreatorForAdminUrl.createRetrofitService(RetrofitAclService.class));
         }
 
         if(needOAuth2Support) {
