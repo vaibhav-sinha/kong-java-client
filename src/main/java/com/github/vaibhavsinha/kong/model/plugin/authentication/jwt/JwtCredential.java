@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 /**
  * Created by vaibhav on 16/06/17.
+ *
+ * Updated by dvilela on 17/10/17.
  */
 @Data
 @NoArgsConstructor
@@ -18,7 +20,7 @@ public class JwtCredential {
     @SerializedName("id")
     private String id;
     @SerializedName("created_at")
-    private Integer createdAt;
+    private Long createdAt;
     @SerializedName("key")
     private String key;
     @SerializedName("algorithm")

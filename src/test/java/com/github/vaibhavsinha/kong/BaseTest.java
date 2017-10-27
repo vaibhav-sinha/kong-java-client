@@ -18,7 +18,7 @@ public class BaseTest {
 	public static final String KONG_ADMIN_URL = "http://test.com:8001";
 	public static final String KONG_API_URL = "https://test.com:8443";
 
-	protected KongClient kongClient;
+	protected static KongClient kongClient;
 
 	protected Gson gson;
 
