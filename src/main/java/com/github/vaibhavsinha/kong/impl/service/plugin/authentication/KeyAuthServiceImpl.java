@@ -5,6 +5,7 @@ import com.github.vaibhavsinha.kong.exception.KongClientException;
 import com.github.vaibhavsinha.kong.internal.plugin.authentication.RetrofitKeyAuthService;
 import com.github.vaibhavsinha.kong.model.plugin.authentication.key.KeyAuthCredential;
 import com.github.vaibhavsinha.kong.model.plugin.authentication.key.KeyAuthCredentialList;
+import retrofit2.Response;
 
 import java.io.IOException;
 
@@ -26,8 +27,12 @@ public class KeyAuthServiceImpl implements KeyAuthService {
     @Override
     public KeyAuthCredential addCredentials(String consumerIdOrUsername, String key) {
         try {
-            return retrofitKeyAuthService.addCredentials(consumerIdOrUsername, new KeyAuthCredential(key)).execute()
-                    .body();
+            Response<KeyAuthCredential> res = retrofitKeyAuthService.addCredentials(consumerIdOrUsername,
+                    new KeyAuthCredential(key)).execute();
+            if (res.code() == 201) {
+                return res.body();
+            }
+            throw new KongClientException("Could not create credentials", res.code(), res.message());
         } catch (IOException e) {
             throw new KongClientException(e.getMessage());
         }
