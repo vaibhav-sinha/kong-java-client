@@ -15,11 +15,8 @@ import com.github.vaibhavsinha.kong.internal.plugin.security.RetrofitAclService;
 import lombok.Data;
 
 /**
- * Created by vaibhav on 12/06/17.
+ * Created by kgignatyev on 2019/02/04.
  *
- * Updated by fanhua on 2017-08-07.
- *
- * Updated by dvilela on 17/10/17.
  */
 @Data
 public class KongClient {
@@ -40,6 +37,7 @@ public class KongClient {
     private KeyAuthService keyAuthService;
     private HmacAuthService hmacAuthService;
     private JwtService jwtService;
+    private ServiceService serviceService;
 
     private OAuth2ProcessService oAuth2ProcessService;
     private OAuth2ManageService oAuth2ManageService;
@@ -83,6 +81,7 @@ public class KongClient {
             sniService = retrofitServiceCreatorForAdminUrl.create(SniService.class, RetrofitSniService.class);
             upstreamService = retrofitServiceCreatorForAdminUrl.create(UpstreamService.class, RetrofitUpstreamService.class);
             targetService = retrofitServiceCreatorForAdminUrl.create(TargetService.class, RetrofitTargetService.class);
+            serviceService = retrofitServiceCreatorForAdminUrl.create(ServiceService.class,RetrofitServiceService.class);
         }
 
         {
@@ -90,6 +89,7 @@ public class KongClient {
             keyAuthService = new KeyAuthServiceImpl(retrofitServiceCreatorForAdminUrl.createRetrofitService(RetrofitKeyAuthService.class));
             hmacAuthService = new HmacAuthServiceImpl(retrofitServiceCreatorForAdminUrl.createRetrofitService(RetrofitHmacAuthService.class));
             jwtService = new JwtAuthServiceImpl(retrofitServiceCreatorForAdminUrl.createRetrofitService(RetrofitJwtService.class));
+
             aclService = new AclServiceImpl(retrofitServiceCreatorForAdminUrl.createRetrofitService(RetrofitAclService.class));
         }
 
