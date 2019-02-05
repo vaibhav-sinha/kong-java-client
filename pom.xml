@@ -13,6 +13,9 @@
     <name>kong-java-client</name>
     <description>Kong is a popular Open Source API Gateway. Kong Java Client makes it easy to configure the API Gateway through your code.</description>
     <url>https://github.com/vaibhav-sinha/kong-java-client</url>
+    <prerequisites>
+        <maven>3.6</maven>
+    </prerequisites>
 
     <licenses>
         <license>
@@ -138,7 +141,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <version>3.6.0</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -175,7 +178,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.5</version>
+                <version>1.6</version>
                 <executions>
                     <execution>
                         <id>sign-artifacts</id>
@@ -189,7 +192,7 @@
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.7</version>
+                <version>1.6.8</version>
                 <extensions>true</extensions>
                 <configuration>
                     <serverId>ossrh</serverId>
