@@ -23,8 +23,9 @@ public class KongClient {
 
     private ConsumerService consumerService;
 
-    private ApiService apiService;
+
     private ApiPluginService apiPluginService;
+    private RouteService routeService;
 
     private PluginService pluginService;
     private PluginRepoService pluginRepoService;
@@ -71,8 +72,9 @@ public class KongClient {
         {
             consumerService = retrofitServiceCreatorForAdminUrl.create(ConsumerService.class, RetrofitConsumerService.class);
 
-            apiService = retrofitServiceCreatorForAdminUrl.create(ApiService.class, RetrofitApiService.class);
+
             apiPluginService = retrofitServiceCreatorForAdminUrl.create(ApiPluginService.class, RetrofitApiPluginService.class);
+            routeService = retrofitServiceCreatorForAdminUrl.create(RouteService.class, RetrofitRouteService.class);
 
             pluginService = retrofitServiceCreatorForAdminUrl.create(PluginService.class, RetrofitPluginService.class);
             pluginRepoService = retrofitServiceCreatorForAdminUrl.create(PluginRepoService.class, RetrofitPluginRepoService.class);

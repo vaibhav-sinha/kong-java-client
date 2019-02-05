@@ -7,7 +7,10 @@ import java.util.List;
 
 /**
  * Created by vaibhav on 13/06/17.
+ *
+ * @Deprecated superseded by {@link .Service} object
  */
+@Deprecated
 @Data
 public class Api {
 

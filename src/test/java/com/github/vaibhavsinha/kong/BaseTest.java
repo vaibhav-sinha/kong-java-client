@@ -8,7 +8,9 @@ import org.apache.log4j.helpers.ISO8601DateFormat;
 import org.junit.Before;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by fanhua on 2017-07-28.
@@ -60,5 +62,9 @@ public class BaseTest {
 
 	protected static String getCurrentDateTimeString() {
 		return new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
+	}
+
+	public static List<String> asList(String ... v){
+		return Arrays.asList(v);
 	}
 }
