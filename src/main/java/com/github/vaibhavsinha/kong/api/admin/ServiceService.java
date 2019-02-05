@@ -15,7 +15,7 @@ public interface ServiceService {
 
     Service updateService(String nameOrId, Service request);
 
-//    Service createOrUpdateService(Service request);
+    Service createOrUpdateService(String nameOrId, Service request);
 
     void deleteService(String nameOrId);
 

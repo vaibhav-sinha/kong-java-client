@@ -22,8 +22,8 @@ public interface RetrofitServiceService {
     Call<Service> updateService(@Path("id") String nameOrId, @Body Service request);
 
     @Deprecated
-    @PUT("services/")
-    Call<Service> createOrUpdateService(@Body Service request);
+    @PUT("services/{id}")
+    Call<Service> createOrUpdateService(@Path("id") String nameOrId, @Body Service request);
 
     @DELETE("services/{id}")
     Call<Void> deleteService(@Path("id") String nameOrId);

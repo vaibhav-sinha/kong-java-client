@@ -38,13 +38,15 @@
     </scm>
 
     <properties>
-        <retrofit.version>2.3.0</retrofit.version>
-        <lombok.version>1.16.16</lombok.version>
-        <slf4j.version>1.6.2</slf4j.version>
+        <retrofit.version>2.5.0</retrofit.version>
+        <lombok.version>1.18.4</lombok.version>
+        <slf4j.version>1.7.25</slf4j.version>
         <jcl.version>1.1</jcl.version>
-        <log4j.version>1.2.16</log4j.version>
+        <log4j.version>1.2.17</log4j.version>
         <logback.version>1.0.6</logback.version>
+        <gson.version>2.8.5</gson.version>
         <junit.version>4.12</junit.version>
+
     </properties>
 
     <dependencies>
@@ -67,7 +69,7 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.8.1</version>
+            <version>${gson.version}</version>
         </dependency>
         <!-- This adapter support rxjava1
         <dependency>

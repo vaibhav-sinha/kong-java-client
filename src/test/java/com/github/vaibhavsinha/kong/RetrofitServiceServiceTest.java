@@ -64,7 +64,6 @@ public class RetrofitServiceServiceTest extends BaseTest {
     public void test04_testUpdateService() throws IOException {
         Service request = new Service();
         request.setName(SERVICE_NAME_V2_NEW);
-
         Service response = kongClient.getServiceService().updateService(SERVICE_ID_V2, request);
         printJson(response);
         Assert.assertEquals(request.getName(), response.getName());
