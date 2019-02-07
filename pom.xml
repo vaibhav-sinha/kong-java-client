@@ -11,7 +11,9 @@
     <packaging>jar</packaging>
 
     <name>kong-java-client</name>
-    <description>Kong is a popular Open Source API Gateway. Kong Java Client makes it easy to configure the API Gateway through your code.</description>
+    <description>Kong is a popular Open Source API Gateway. Kong Java Client makes it easy to configure the API Gateway
+        through your code.
+    </description>
     <url>https://github.com/vaibhav-sinha/kong-java-client</url>
     <prerequisites>
         <maven>3.6</maven>
@@ -28,6 +30,10 @@
         <developer>
             <name>Vaibhav Sinha</name>
             <email>vaibhavsinh@gmail.com</email>
+        </developer>
+        <developer>
+            <name>Konstantin Ignatyev</name>
+            <email>konstantin@inspur.com</email>
         </developer>
     </developers>
 
