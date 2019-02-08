@@ -12,4 +12,10 @@ public class IdObject {
     @SerializedName("id")
     private String id;
 
+    public IdObject(String id) {
+        this.id = id;
+    }
+
+    public IdObject() {
+    }
 }

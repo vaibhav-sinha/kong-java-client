@@ -17,6 +17,7 @@ public class Target {
     private Long weight;
     @SerializedName("upstream_id")
     private String upstreamId;
+    //todo: by strange reason Kong returns this as double
     @SerializedName("created_at")
-    private Long createdAt;
+    private Double createdAt;
 }
