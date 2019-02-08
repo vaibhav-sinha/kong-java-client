@@ -61,8 +61,10 @@ public class KongClient {
             if (proxyUrl == null || proxyUrl.isEmpty()) {
                 throw new IllegalArgumentException("The proxyUrl cannot be null or empty!");
             }
-            if (!proxyUrl.startsWith("https://")) {
-                throw new IllegalArgumentException("The proxyUrl must use https if you need OAuth2 support!");
+            if( ! Boolean.parseBoolean( System.getenv().getOrDefault("KONG_DISABLE_HTTPS_CHECK", "false") )) {
+                if (!proxyUrl.startsWith("https://")) {
+                    throw new IllegalArgumentException("The proxyUrl must use https if you need OAuth2 support!");
+                }
             }
         }
 

@@ -29,7 +29,7 @@ public interface RetrofitOAuth2ManageService {
     /**
      * Create OAuth2 application for the consumer
      * */
-    @POST("/consumers/{consumer_id}/oauth2")
+    @POST("/consumers/{consumer_id}/oauth2/")
     Call<Application> createConsumerApplication(@Path("consumer_id") String consumerId, @Body Application request);
 
     @GET("/consumers/{consumer_id}/oauth2/{id}")
