@@ -110,10 +110,14 @@ public class RetrofitOAuth2ManageServiceTest extends BaseTest {
 
     @Test
     public void test07_DeleteOAuth2App() throws IOException {
-
         kongClient.getOAuth2ManageService().deleteConsumerApplication(CONSUMER_ID, appClientId);
+    }
+
+    @Test
+    public void test08_DeleteOAuth2App() throws IOException {
         kongClient.getConsumerService().deleteConsumer(CONSUMER_ID);
 
     }
+
 
 }

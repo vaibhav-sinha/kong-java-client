@@ -19,13 +19,13 @@ import java.util.List;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RetrofitServiceServiceTest extends BaseTest {
 
-    private String SERVICE_NAME_V1 = "Test_V1_Service";
+//    private String SERVICE_NAME_V1 = "Test_V1_Service";
 //    private String SERVICE_ID_V1 = "f813a66b-bac6-4951-831b-f04d53ae0bf0"; // not exist
-    private String SERVICE_ID_V1 = "3a9fa5b9-5f99-4ab8-a949-d676becd30b3";
+//    private String SERVICE_ID_V1 = "3a9fa5b9-5f99-4ab8-a949-d676becd30b3";
 
     private String SERVICE_NAME_V2 = "Test_V2_Service";
     private String SERVICE_NAME_V2_NEW = "Test.V2.Service";
-    private String SERVICE_ID_V2 = "f813a66b-bac6-4952-831b-f04d53ae0bf0";
+    String SERVICE_ID_V2 = "f813a66b-bac6-4952-831b-f04d53ae0bf0";
 
     private String SERVICE_PATH = "/httpbin";
     private String SERVICE_HOST = "httpbin.com";
