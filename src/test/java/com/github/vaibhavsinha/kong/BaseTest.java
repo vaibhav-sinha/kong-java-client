@@ -8,12 +8,18 @@ import org.apache.log4j.helpers.ISO8601DateFormat;
 import org.junit.Before;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by fanhua on 2017-07-28.
  */
 public class BaseTest {
+
+	public static final String ENV_KONG_ADMIN_URL = "KONG_ADMIN_URL";
+	public static final String ENV_KONG_API_URL = "KONG_API_URL";
+	public static final String ENV_KONG_NEED_OAUTH_SUPPORT = "KONG_NEED_OAUTH_SUPPORT";
 
 	public static final String KONG_ADMIN_URL = "http://test.com:8001";
 	public static final String KONG_API_URL = "https://test.com:8443";
@@ -22,10 +28,16 @@ public class BaseTest {
 
 	protected Gson gson;
 
+	public static String getEnvVariableOrDefault( String key, String defautV ){
+		return System.getenv().getOrDefault(key, defautV );
+	}
+
 	@Before
 	public void before() {
 
-		kongClient = new KongClient(KONG_ADMIN_URL, KONG_API_URL, true);
+		kongClient = new KongClient(getEnvVariableOrDefault(ENV_KONG_ADMIN_URL, KONG_ADMIN_URL),
+				getEnvVariableOrDefault(ENV_KONG_API_URL, KONG_API_URL),
+				Boolean.valueOf( getEnvVariableOrDefault(ENV_KONG_NEED_OAUTH_SUPPORT, "true")));
 
 		gson = new GsonBuilder()
 //				.excludeFieldsWithoutExposeAnnotation() 	//不导出实体中没有用@Expose注解的属性
@@ -50,5 +62,9 @@ public class BaseTest {
 
 	protected static String getCurrentDateTimeString() {
 		return new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
+	}
+
+	public static List<String> asList(String ... v){
+		return Arrays.asList(v);
 	}
 }

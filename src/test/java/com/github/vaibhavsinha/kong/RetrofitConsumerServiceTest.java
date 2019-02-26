@@ -34,11 +34,25 @@ public class RetrofitConsumerServiceTest extends BaseTest {
     }
 
     @Test
-    public void test02_GetConsumer() throws IOException {
+    public void test020_GetConsumer() throws IOException {
         Consumer response = kongClient.getConsumerService().getConsumer(CONSUMER_ID);
         printJson(response);
         Assert.assertEquals(CONSUMER_ID, response.getId());
     }
+
+    @Test
+    public void test021_ListConsumers() throws IOException {
+        List<Consumer> consumers = new ArrayList<>();
+        ConsumerList consumerList = kongClient.getConsumerService().listConsumers(null, null, null, 1L, null);
+        consumers.addAll(consumerList.getData());
+        while (consumerList.getOffset() != null) {
+            consumerList = kongClient.getConsumerService().listConsumers(null, null, null, 1L, consumerList.getOffset());
+            consumers.addAll(consumerList.getData());
+        }
+        printJson(consumers);
+        Assert.assertNotEquals(consumers.size(), 0);
+    }
+
 
     @Test(expected = KongClientException.class)
     public void test03_exceptionTest() throws IOException {
@@ -55,7 +69,7 @@ public class RetrofitConsumerServiceTest extends BaseTest {
         Assert.assertEquals(request.getCustomId(), response.getCustomId());
     }
 
-//    @Test
+    //    @Test
     public void test05_CreateOrUpdateConsumer() throws IOException {
         Consumer request = new Consumer();
         request.setCustomId(CONSUMER_CUSTOM_ID);
@@ -71,19 +85,6 @@ public class RetrofitConsumerServiceTest extends BaseTest {
     @Test
     public void test09_DeleteConsumer() throws IOException {
         kongClient.getConsumerService().deleteConsumer(CONSUMER_ID);
-    }
-
-    @Test
-    public void test10_ListConsumers() throws IOException {
-        List<Consumer> consumers = new ArrayList<>();
-        ConsumerList consumerList = kongClient.getConsumerService().listConsumers(null, null, null, 1L, null);
-        consumers.addAll(consumerList.getData());
-        while (consumerList.getOffset() != null) {
-            consumerList = kongClient.getConsumerService().listConsumers(null, null, null, 1L, consumerList.getOffset());
-            consumers.addAll(consumerList.getData());
-        }
-        printJson(consumers);
-        Assert.assertNotEquals(consumers.size(), 0);
     }
 
 

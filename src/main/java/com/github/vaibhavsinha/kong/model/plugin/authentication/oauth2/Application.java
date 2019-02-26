@@ -23,15 +23,15 @@ public class Application {
     @SerializedName("client_id")
     private String clientId;
 
-    @SerializedName("redirect_uri")
-    private List<String> redirectUri;
+    @SerializedName("redirect_uris")
+    private List<String> redirectUris;
 
     @SerializedName("created_at")
     private Long createdAt;
 
-    public Application(String name, List<String> redirectUri, String clientId, String clientSecret) {
+    public Application(String name, List<String> redirectUris, String clientId, String clientSecret) {
         this.name = name;
-        this.redirectUri = redirectUri;
+        this.redirectUris = redirectUris;
         this.clientId = clientId;
         this.clientSecret = clientSecret;
     }

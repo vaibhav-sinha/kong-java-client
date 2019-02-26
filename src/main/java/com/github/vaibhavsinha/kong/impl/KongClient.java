@@ -15,19 +15,17 @@ import com.github.vaibhavsinha.kong.internal.plugin.security.RetrofitAclService;
 import lombok.Data;
 
 /**
- * Created by vaibhav on 12/06/17.
+ * Created by kgignatyev on 2019/02/04.
  *
- * Updated by fanhua on 2017-08-07.
- *
- * Updated by dvilela on 17/10/17.
  */
 @Data
 public class KongClient {
 
     private ConsumerService consumerService;
 
-    private ApiService apiService;
-    private ApiPluginService apiPluginService;
+
+    private ServicePluginService servicePluginService;
+    private RouteService routeService;
 
     private PluginService pluginService;
     private PluginRepoService pluginRepoService;
@@ -40,6 +38,7 @@ public class KongClient {
     private KeyAuthService keyAuthService;
     private HmacAuthService hmacAuthService;
     private JwtService jwtService;
+    private ServiceService serviceService;
 
     private OAuth2ProcessService oAuth2ProcessService;
     private OAuth2ManageService oAuth2ManageService;
@@ -62,8 +61,10 @@ public class KongClient {
             if (proxyUrl == null || proxyUrl.isEmpty()) {
                 throw new IllegalArgumentException("The proxyUrl cannot be null or empty!");
             }
-            if (!proxyUrl.startsWith("https://")) {
-                throw new IllegalArgumentException("The proxyUrl must use https if you need OAuth2 support!");
+            if( ! Boolean.parseBoolean( System.getenv().getOrDefault("KONG_DISABLE_HTTPS_CHECK", "false") )) {
+                if (!proxyUrl.startsWith("https://")) {
+                    throw new IllegalArgumentException("The proxyUrl must use https if you need OAuth2 support!");
+                }
             }
         }
 
@@ -73,8 +74,9 @@ public class KongClient {
         {
             consumerService = retrofitServiceCreatorForAdminUrl.create(ConsumerService.class, RetrofitConsumerService.class);
 
-            apiService = retrofitServiceCreatorForAdminUrl.create(ApiService.class, RetrofitApiService.class);
-            apiPluginService = retrofitServiceCreatorForAdminUrl.create(ApiPluginService.class, RetrofitApiPluginService.class);
+
+            servicePluginService = retrofitServiceCreatorForAdminUrl.create(ServicePluginService.class, RetrofitServicePluginService.class);
+            routeService = retrofitServiceCreatorForAdminUrl.create(RouteService.class, RetrofitRouteService.class);
 
             pluginService = retrofitServiceCreatorForAdminUrl.create(PluginService.class, RetrofitPluginService.class);
             pluginRepoService = retrofitServiceCreatorForAdminUrl.create(PluginRepoService.class, RetrofitPluginRepoService.class);
@@ -83,6 +85,7 @@ public class KongClient {
             sniService = retrofitServiceCreatorForAdminUrl.create(SniService.class, RetrofitSniService.class);
             upstreamService = retrofitServiceCreatorForAdminUrl.create(UpstreamService.class, RetrofitUpstreamService.class);
             targetService = retrofitServiceCreatorForAdminUrl.create(TargetService.class, RetrofitTargetService.class);
+            serviceService = retrofitServiceCreatorForAdminUrl.create(ServiceService.class,RetrofitServiceService.class);
         }
 
         {
@@ -90,6 +93,7 @@ public class KongClient {
             keyAuthService = new KeyAuthServiceImpl(retrofitServiceCreatorForAdminUrl.createRetrofitService(RetrofitKeyAuthService.class));
             hmacAuthService = new HmacAuthServiceImpl(retrofitServiceCreatorForAdminUrl.createRetrofitService(RetrofitHmacAuthService.class));
             jwtService = new JwtAuthServiceImpl(retrofitServiceCreatorForAdminUrl.createRetrofitService(RetrofitJwtService.class));
+
             aclService = new AclServiceImpl(retrofitServiceCreatorForAdminUrl.createRetrofitService(RetrofitAclService.class));
         }
 

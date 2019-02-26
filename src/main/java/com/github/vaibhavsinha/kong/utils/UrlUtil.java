@@ -3,9 +3,7 @@ package com.github.vaibhavsinha.kong.utils;
 import com.google.gson.Gson;
 
 import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLDecoder;
+import java.net.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -16,19 +14,18 @@ public class UrlUtil {
 
 	public static Map<String, String> splitQueryString(String urlString) {
 		try {
-			URL url = new URL(urlString);
-			Map<String, String> query_pairs = new LinkedHashMap<>();
-			String queryString = url.getQuery();
-			if(queryString != null) {
-				String[] pairs = queryString.split("&");
-				for (String pair : pairs) {
-					int idx = pair.indexOf("=");
-					query_pairs.put(URLDecoder.decode(pair.substring(0, idx), "UTF-8"), URLDecoder.decode(pair.substring(idx + 1), "UTF-8"));
-				}
+			String queryString = "";
+			if( urlString.toLowerCase().startsWith("http")){
+				URL url = new URL(urlString);
+				queryString = url.getQuery();
+			}else{  //sometimes kong does not return url, but URI only
+				URI uri = new URI(urlString);
+				queryString = uri.getQuery();
 			}
-			return query_pairs;
+			return parseQueryString( queryString);
+
 		}
-		catch (MalformedURLException | UnsupportedEncodingException e) {
+		catch (URISyntaxException | MalformedURLException | UnsupportedEncodingException e) {
 			throw new IllegalArgumentException("Could not parse URL: " + urlString, e);
 		}
 	}
@@ -37,20 +34,24 @@ public class UrlUtil {
 	public static Map<String, String> splitFragmentString(String urlString) {
 		try {
 			URL url = new URL(urlString);
-			Map<String, String> query_pairs = new LinkedHashMap<>();
 			String fragmentString = url.getRef();
-			if(fragmentString != null) {
-				String[] pairs = fragmentString.split("&");
-				for (String pair : pairs) {
-					int idx = pair.indexOf("=");
-					query_pairs.put(URLDecoder.decode(pair.substring(0, idx), "UTF-8"), URLDecoder.decode(pair.substring(idx + 1), "UTF-8"));
-				}
-			}
-			return query_pairs;
+			return parseQueryString( fragmentString);
 		}
 		catch (MalformedURLException | UnsupportedEncodingException e) {
 			throw new IllegalArgumentException("Could not parse URL: " + urlString, e);
 		}
+	}
+
+	private static Map<String, String>  parseQueryString( String fragmentString) throws UnsupportedEncodingException {
+		Map<String, String> query_pairs = new LinkedHashMap<>();
+		if (fragmentString != null) {
+			String[] pairs = fragmentString.split("&");
+			for (String pair : pairs) {
+				int idx = pair.indexOf("=");
+				query_pairs.put(URLDecoder.decode(pair.substring(0, idx), "UTF-8"), URLDecoder.decode(pair.substring(idx + 1), "UTF-8"));
+			}
+		}
+		return query_pairs;
 	}
 
 
