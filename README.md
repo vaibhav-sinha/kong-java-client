@@ -67,3 +67,10 @@ To do the OAuth2 Process (Authorization Code)
     //See: RetrofitOAuth2ProcessServiceTest.java
     kongClient.getOAuth2ProcessService().authorize(API_URI, authorizationRequest);
     kongClient.getOAuth2ProcessService().grantToken(API_URI, grantTokenRequest)
+
+## test
+
+export KONG_DISABLE_HTTPS_CHECK=true
+export KONG_ADMIN_URL=http://localhost:32444
+
+mvn test

@@ -15,23 +15,23 @@ import java.util.List;
 
 /**
  * Created by vaibhav on 12/06/17.
- *
+ * <p>
  * Updated by fanhua on 2017-08-04.
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class RetrofitPluginServiceTest  extends BaseTest {
+public class RetrofitPluginServiceTest extends BaseTest {
 
 
     private String PLUGIN_ID = "61e5b656-7b68-4761-aeae-d9c94a5782c8";
     private String PLUGIN_NAME = "jwt";
 
-    private String API_ID = "3a9fa5b9-5f99-4ab8-a949-d676becd30b3";
 
     @Test
     public void test11_CreatePlugin() throws IOException {
         Plugin request = new Plugin();
         request.setId(PLUGIN_ID);
-        request.setApiId(API_ID); // make sure you put the valid API_ID here, if you don't put API_ID, the the plugin will take effect on all APIs
+//        to do add creation of service here
+//        request.setApiId(API_ID); // make sure you put the valid API_ID here, if you don't put API_ID, the the plugin will take effect on all APIs
         request.setName(PLUGIN_NAME);
 
         Plugin response = kongClient.getPluginService().addPlugin(request);
@@ -63,22 +63,18 @@ public class RetrofitPluginServiceTest  extends BaseTest {
         Assert.assertEquals(request.getName(), response.getName());
     }
 
-//    @Test
+    //    @Test
     public void test15_CreateOrUpdatePlugin() throws IOException {
         Plugin request = new Plugin();
         request.setName(PLUGIN_NAME);
         request.setId(PLUGIN_ID);
         request.setCreatedAt(new Date().getTime());
 
-        Plugin response = kongClient.getPluginService().createOrUpdatePlugin(request);
+        Plugin response = kongClient.getPluginService().createOrUpdatePlugin(PLUGIN_ID, request);
         printJson(response);
         Assert.assertEquals(request.getName(), response.getName());
     }
 
-    @Test
-    public void test19_DeletePlugin() throws IOException {
-        kongClient.getPluginService().deletePlugin(PLUGIN_ID);
-    }
 
     @Test
     public void test20_ListPlugins() throws IOException {
@@ -93,4 +89,9 @@ public class RetrofitPluginServiceTest  extends BaseTest {
         Assert.assertNotEquals(plugins.size(), 0);
     }
 
+
+    @Test
+    public void test21_DeletePlugin() throws IOException {
+        kongClient.getPluginService().deletePlugin(PLUGIN_ID);
+    }
 }
