@@ -6,7 +6,7 @@
 
     <groupId>com.github.vaibhav-sinha</groupId>
     <artifactId>kong-java-client</artifactId>
-    <version>0.1.4-SNAPSHOT</version>
+    <version>0.2.0</version>
 
     <packaging>jar</packaging>
 
@@ -144,7 +144,6 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -171,7 +170,6 @@
                     </execution>
                 </executions>
             </plugin>
-            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>

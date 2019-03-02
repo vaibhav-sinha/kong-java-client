@@ -21,7 +21,7 @@ public interface ApiService {
      * But it only take effect when API id is empty.
      * 2. When the API id input is not empty, it will consider to update the existing API. So, we can either
      * create a API (without id), or update a API (with id).
-     * 3. When you try to create a API with name & id, it will become odd. Kong will give you the 200(ok) response,
+     * 3. When you try to create a API with name and id, it will become odd. Kong will give you the 200(ok) response,
      * but won't create the API that you wanted. (That's why we'd better not use this interface.
      *
      * */

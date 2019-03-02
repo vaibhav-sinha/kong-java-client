@@ -9,7 +9,7 @@ The artifact is available on Maven Central Repository and be downloaded by addin
     <dependency>
         <groupId>com.github.vaibhav-sinha</groupId>
         <artifactId>kong-java-client</artifactId>
-        <version>0.1.1-SNAPSHOT</version>
+        <version>0.2.0</version>
     </dependency>
     
 ## Usage
